@@ -1,0 +1,33 @@
+<li class="dropdown">
+  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+    在线商品
+    <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu">
+    <li class="dropdown-submenu">
+      <a tabindex="-1" href="#">品牌</a>
+      <ul class="dropdown-menu">
+        <% Brand.all.each do |brand| %>
+          <li> 
+            <%= link_to find_p_by_brand_say_path(brand) do%>
+              <i class="icon-chevron-right"></i><%= brand.name%>
+            <% end %>
+          </li>
+        <% end %>              
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a tabindex="-1" href="#">产品</a>
+      <ul class="dropdown-menu">
+
+        <% Category.all.each do |category| %>
+          <li>
+            <%= link_to find_p_by_category_say_path(category) do%>
+                <i class="icon-chevron-right"></i><%= category.name%>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+</li>

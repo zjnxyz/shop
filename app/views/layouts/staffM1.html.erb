@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>家电商场销售管理系统</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <%= csrf_meta_tags %>
+  
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" type="text/css" href="/assets/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="/assets/datepicker.css">
+  <link rel="stylesheet" type="text/css" href="/assets/bootstrap-responsive.css">
+  <link rel="stylesheet" type="text/css" href="/assets/bootmetro.css">
+  <link rel="stylesheet" type="text/css" href="/assets/bootmetro-tiles.css">
+  <link rel="stylesheet" type="text/css" href="/assets/bootmetro-charms.css">
+  <link rel="stylesheet" type="text/css" href="/assets/metro-ui-light.css">
+  <link rel="stylesheet" type="text/css" href="/assets/icomoon.css">
+
+  <!--  these two css are to use only for documentation -->
+  <link rel="stylesheet" type="text/css" href="/assets/demo.css">
+  <link rel="stylesheet" type="text/css" href="/assets/google-code-prettify/prettify.css" >
+
+
+  <!-- All JavaScript at the bottom, except for Modernizr and Respond.
+Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="/assets/modernizr-2.6.1.min.js"></script>
+  <script type="text/javascript" src="/assets/application.js"></script>
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">家电商场销售管理系统</a>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li class="active"><a href="/welcome/index">首页</a></li>
+          <li><a href="/admin/index"> <i class="icon-star"></i> 个人中心</a></li>
+        </ul>
+        <span class="pull-right">
+              <strong><%= Staff.find_by_id(session[:staff_id]).name %></strong>
+              <button class="btn btn-danger" type="button"><a href="/sessions/destroy">退出</a></button>
+         </span>
+
+
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div><br>
+
+<div class="container">
+
+  <div class="row">
+    <div class="span3 bs-docs-sidebar">
+      <ul class="nav nav-list bs-docs-sidenav">
+        <li><a href="/staffs/<%=session[:staff_id] %>"><i class="icon-chevron-right"></i> 基本信息</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            员工管理
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to staffs_path do %><i class="icon-chevron-right"></i>员工清单<% end %>
+            </li>
+            <li>
+              <%= link_to new_staff_path do %><i class="icon-chevron-right"></i>增加员工 <% end %>
+            </li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            会员管理
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+
+            <li><a href="/users"><i class="icon-chevron-right"></i>会员清单</a></li>
+            <li>
+              <%= link_to new_user_path do %><i class="icon-chevron-right"></i>增加会员</a><% end %>
+            </li>
+            <li><a href="/members"><i class="icon-chevron-right"></i>会员类型</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            商品管理
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/units"><i class="icon-chevron-right"></i>单位清单</a></li>
+            <li><a href="/brands"><i class="icon-chevron-right"></i>品牌清单</a></li>
+            <li><a href="/categories"><i class="icon-chevron-right"></i>产品清单</a></li>
+            <li><a href="/products"><i class="icon-chevron-right"></i>商品清单</a></li>
+          </ul>
+        </li>
+
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            库存管理
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#global"><i class="icon-chevron-right"></i>库存查询</a></li>
+            <li><a href="#gridSystem"><i class="icon-chevron-right"></i>库存盘点</a></li>
+            <li><a href="#gridSystem"><i class="icon-chevron-right"></i>库存下线报警</a></li>
+            <li><a href="/products/add_product"><i class="icon-chevron-right"></i>进货</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            销售管理
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#global"><i class="icon-chevron-right"></i>预定清单</a></li>
+            <li><a href="#gridSystem"><i class="icon-chevron-right"></i>增加销售单</a></li>
+            <li><a href="#fluidGridSystem"><i class="icon-chevron-right"></i>销售清单</a></li>
+            <li><a href="#fluidGridSystem"><i class="icon-chevron-right"></i>申请清单</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            报表管理
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#global"><i class="icon-chevron-right"></i>商品销售报表</a></li>
+            <li><a href="#gridSystem"><i class="icon-chevron-right"></i>品牌销售报表</a></li>
+            <li><a href="#fluidGridSystem"><i class="icon-chevron-right"></i>产品销售报表</a></li>
+            <li><a href="#fluidGridSystem"><i class="icon-chevron-right"></i>业务员销售报表</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="span9">
+      <%= yield %>
+    </div><!--end span9-->
+  </div><!--end row-->
+
+
+  <footer align="center">
+    <p>&copy; Company 2012</p>
+  </footer>
+
+</div>
+
+<script type="text/javascript" src="/assets/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="/assets/google-code-prettify/prettify.js"></script>
+<script type="text/javascript" src="/assets/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="/assets/jquery.scrollTo.js"></script>
+<script type="text/javascript" src="/assets/bootstrap.min.js"></script>
+<script type="text/javascript" src="/assets/bootmetro.js"></script>
+<script type="text/javascript" src="/assets/bootmetro-charms.js"></script>
+<script type="text/javascript" src="/assets/demo.js"></script>
+<script type="text/javascript" src="/assets/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="/assets/holder.js"></script>
+<script type="text/javascript">
+    $(".metro").metro();
+    $('#i').datepicker();
+    $('#a').click(function(){
+     alert("haha");
+
+  } );
+</script>
+</body>
+</html>

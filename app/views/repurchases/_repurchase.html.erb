@@ -1,0 +1,15 @@
+<% if locals[:i]%3==1 %>
+
+    <tr class="success">
+      <%= render "repurchases/repurchase_one", :target =>repurchase %>
+    </tr>
+<% elsif locals[:i]%3==2%>
+    <tr class="error">
+      <%= render "repurchases/repurchase_one", :target =>repurchase %>
+    </tr>
+<% else %>
+    <tr class="waring">
+      <%= render "repurchases/repurchase_one", :target =>repurchase %>
+    </tr>
+<% end %>
+<% locals[:i]+=1 %>

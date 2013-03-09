@@ -1,0 +1,16 @@
+<td><%= format_date(target.created_at) %></td>
+<td><%= target.id %></td>
+<td>
+    <a class="tile wide imagetext wideimage" href="#">
+      <%= image_tag(img_url(target.product.img_url)) %>
+      <div class="textover-wrapper">
+        <div class="text2"><%=target.product.name %></div>
+      </div>
+    </a>
+</td>
+<td><%= target.user.name %></td>
+<td>￥<%= target.product.sell_price%></td>
+<td>￥<%= target.actual_sum%></td>
+<td>￥<%= target.product.percentage_price%></td>
+<td><%= target.product.over_royalty_percentage%></td>
+<td><%= count_percen target.product.percentage_price,target.actual_sum, target.product.over_royalty_percentage,target.amount %></td>

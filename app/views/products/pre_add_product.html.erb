@@ -1,0 +1,50 @@
+<div class="page-header">
+  <h1>进货</h1>
+</div>
+
+<%= render "share/notice_message", :target => notice %>
+
+<div>
+  <div class="form-horizontal">
+    <%= form_tag do %>
+        <div class="control-group">
+          <label class="control-label" for="inputEmail">商品编号</label>
+          <div class="controls">
+            <%=autocomplete_field_tag 'number', '', :autocomplete => autocomplete_product_number_products_path,:placeholder=>"HR0001T160B" %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="inputEmail">商品名称</label>
+          <div class="controls">
+            <input type="text"  placeholder="海尔电风扇T160版">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="inputEmail">进货单价</label>
+          <div class="controls">
+            <span class="add-on">￥</span>
+            <input class="span2" name="p_price" type="text">
+            <span class="add-on">.00</span>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="inputEmail">进货数量</label>
+          <div class="controls">
+            <input type="text" name="p_num"  placeholder="10">
+          </div>
+        </div>
+
+
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn btn-primary">进货</button>
+          </div>
+        </div>
+    <% end %>
+  </div>
+
+
+</div>

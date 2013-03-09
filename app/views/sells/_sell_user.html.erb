@@ -1,0 +1,29 @@
+<td><%= target.id %></td>
+<% if !target.product.blank? %>
+  <td>
+    <a class="tile wide imagetext wideimage" href="#">
+      <%= image_tag(img_url(target.product.img_url)) %>
+      <div class="textover-wrapper">
+        <div class="text2"><%=target.product.name %></div>
+      </div>
+    </a>
+  </td>
+<% else %>
+ <td>该商品已被删除</td>
+<% end %>
+
+<td><%= target.actual_sum %></td>
+<td><%= target.amount %></td>
+<td><%= format_date(target.created_at) %></td>
+<td><%= format_resell target.status %></td>
+<td align="center"> 
+  <br>  
+  <% if target.status %>
+   <span class="badge badge-important">关闭</span>
+  <% else %>
+    <%= link_to pre_create_app_application_path(target),:class=>"btn btn-danger" do %>
+      <i class=" icon-leaf"></i>申请</button>
+    <% end %>
+  <% end %>             
+  
+</td>

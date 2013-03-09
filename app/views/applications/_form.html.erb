@@ -1,0 +1,54 @@
+<%= form_for(@application) do |f| %>
+  <%= render "share/error_message", :target => @application %>
+   <table class="table table-bordered">
+    <tr>
+        <td>选择商品</td>
+        <td>
+            <select name="sell_id">
+              <option value="0">请选择</option>
+               <% Sell.where("user_id = ? and status = ?",session[:user_id],false).each do |sell| %>
+                <option value="<%= sell.id%>"><%= sell.id.to_s + sell.product.name %></option>
+               <% end %>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+          申请理由
+        </td>
+        <td>
+          <%= f.text_area :remark,:rows=>5%>
+        </td>
+    </tr>
+              
+    <tr>
+        <td>
+                   申请类型
+        </td>
+        <td>
+            <label class="radio">
+              <%= f.radio_button(:app_type,"1") %>
+              <span class="metro-radio">维修</span>
+            </label>
+            <label class="radio">
+               <%= f.radio_button(:app_type,"2") %>
+               <span class="metro-radio">保修</span>
+            </label>
+
+            <label class="radio">
+               <%= f.radio_button(:app_type,"3") %>
+               <span class="metro-radio">退货</span>
+            </label>
+
+        </td>
+    </tr>
+              
+    <tr >
+        <td colspan="2"  align="center">
+          <%= f.submit "申请",:class=>"btn  btn-primary"  %>
+        </td>
+                
+    </tr>
+              
+  </table>
+<% end %>

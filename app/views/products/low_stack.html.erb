@@ -1,0 +1,43 @@
+<div class="page-header">
+    <h3>已达库存下线清单</h3><br>
+
+    <%= form_for @search, :remote => true,:url =>"low_stack", :html => {:method => :get} do |f| %>
+      商品编号：<%= f.search_field :number_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+      品牌：<%= f.text_field :brand_name_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %><br><br>
+      商品名称：<%= f.search_field :name_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+      产品：<%= f.search_field :category_name_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+      <%= f.submit "查找",:class =>"btn btn-info" %>
+    <% end %>
+</div>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>商品编号</th>
+      <th>商品</th>
+      <th>品牌</th>
+      <th>产品</th>
+      <th>库存下线</th>
+      <th>库存数量</th>
+      <th>操作</th>
+    </tr>
+    </thead>
+    <tbody id="search">
+      <%= render @products,:locals => {:i=>0,:lay=>4} %>           
+    </tbody>
+  </table>
+  <div id="page" class="pagination">
+      <%= paginate @products %>
+  </div>
+
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">进货</h3>
+  </div>
+  <div id="purchase" class="modal-body">
+    
+  </div>
+  
+</div>
+

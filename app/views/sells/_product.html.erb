@@ -1,0 +1,13 @@
+<% if !target.blank? %>
+  <td><%= target.number %></td>
+  <td>
+      <a class="tile wide imagetext wideimage" href="#">
+        <%= image_tag(img_url(target.img_url)) %>
+        <div class="textover-wrapper">
+          <div class="text2"><%=target.name %></div>
+        </div>
+      </a>
+  </td>
+<% else %>
+<td colspan="2">该商品已被删除</td> 
+<% end %>

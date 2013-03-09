@@ -1,0 +1,7 @@
+ <% target.each do |category,products| %>
+            <div class="tab-pane active" id="<%= category.id %>">
+              <% products.each do |product| %>
+                 <%= render "say/product",:target=>product %>
+              <% end %>
+            </div>     
+    <% end %>

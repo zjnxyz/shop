@@ -1,0 +1,96 @@
+<%= form_for(@user,:html=>{:id=>"form_validator"}) do |f| %>
+  
+  <%= render "share/error_message", :target => @user %>
+  <table class="table table-bordered">
+    <tr>
+        <td width="120px">
+          用户名
+        </td>
+        <td>
+          <%= f.text_field :username,:placeholder=>"用户名",:class=>"span3 validate[required] "%>
+        </td>
+      </tr>
+
+     <tr>
+        <td width="120px">
+          真实姓名
+        </td>
+        <td>
+          <%= f.text_field :name,:placeholder=>"真实姓名",:class=>"span3 validate[required] "%>
+        </td>
+      </tr>
+<!--
+      <tr>
+        <td width="120px">
+          密码
+        </td>
+        <td>
+          <%= f.password_field :password,:placeholder=>"密码",:class=>"span3 "%>
+        </td>
+      </tr>
+-->
+      <tr>
+        <td width="120px">
+          手机
+        </td>
+        <td>
+          <%= f.telephone_field :phone,:placeholder=>"手机号码",:class=>"span3 validate[required] "%>
+        </td>
+      </tr>
+
+      <tr>
+        <td width="120px">
+          邮箱
+        </td>
+        <td>
+          <%= f.email_field :email,:placeholder=>"123@qq.com",:class=>"span3 validate[required] custom[email]"%>
+        </td>
+      </tr>
+
+      <%if session[:staff_id] %>
+       <tr>
+          <td width="120px">
+            会员类型
+          </td>
+          <td>
+            <% Member.all.each do |member| %>
+              <% if @user.member.blank? %>
+                 <label class="radio">
+                  <input type="radio" name="member_id" id="optionsRadios1" value="<%= member.id %>">
+                  <span class="metro-radio"><%= member.name %></span>
+                 </label>
+              <% elsif @user.member.id == member.id %>
+
+                  <label class="radio">
+                    <input type="radio" name="member_id" id="optionsRadios1" value="<%= member.id %>" checked>
+                    <span class="metro-radio"><%= member.name %></span>
+                  </label>
+              <% else %>
+
+                  <label class="radio">
+                    <input type="radio" name="member_id" id="optionsRadios1" value="<%= member.id %>">
+                    <span class="metro-radio"><%= member.name %></span>
+                  </label>
+
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      <tr>
+        <td width="120px">
+          备注
+        </td>
+        <td>
+          <%= f.text_area :remark,:placeholder=>"备注",:rows=>5%>
+        </td>
+      </tr>
+
+        <tr >
+          <td colspan="2"  align="center">
+             <%= f.submit "保存",:class=>"btn btn-primary" %>
+          </td>
+                
+        </tr>
+  </table>
+<% end %>

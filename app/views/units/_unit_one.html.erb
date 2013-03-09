@@ -1,0 +1,17 @@
+<td><%=target.id %></td>
+<td>
+    <%= target.name %>
+</td>
+<td><%= format_date(target.created_at) %></td>
+<td align="center">
+   <%= link_to edit_unit_path(target),:class => "btn btn-primary" do %> 
+     <i class="icon-edit"> </i> 修改
+   <% end %>
+   <% if false %>
+	    <%= link_to target, method: :delete,:class=>"btn btn-inverse", data: { confirm: '你确定要删除吗?' } do %>
+	     <i class="icon-trash"> </i> 删除
+	    <% end %>
+   <% end %>
+   <br><br>
+   
+</td>

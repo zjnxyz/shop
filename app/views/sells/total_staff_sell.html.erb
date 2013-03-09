@@ -1,0 +1,35 @@
+<div class="page-header">
+    <h3>销售清单</h3>
+<div>
+        <%= form_for @search, :remote =>true,:url =>"/sells/total_staff_sell", :html => {:method => :get} do |f| %>
+          起始日期：<%= f.search_field :created_at_gte,:class=>"input-medium search-query date" %>
+          终止日期：<%= f.search_field :created_at_lte,:class=>"input-medium search-query date" %>
+          
+          <%= f.submit "查找",:class =>"btn btn-success" %>
+       <% end %> 
+    </div>
+ </div>
+<div>
+               <table class="table table-bordered">
+                 <thead>
+                   <tr>
+                     <th>销售日期</th>
+                     <th>销售单号</th>
+                     <th>商品</th>                     
+                     <th>会员姓名</th>
+                     <th>预售价</th>
+                     <th>实收金额</th>
+                     <th>提成底价</th>
+                     <th>超出底价提成比例</th>
+                     <th>总提成</th>
+                   </tr>
+                 </thead>
+                 <tbody id="search">
+                    <%= render @sells,:locals => {:i=>0,:lay=>3} %>
+                 </tbody>
+               </table>
+
+               <div id="page" class="pagination">
+                <%= paginate @sells %>
+               </div>
+             </div>

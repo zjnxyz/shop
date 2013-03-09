@@ -1,0 +1,19 @@
+<td> <%= link_to target do%> <%= target.number %><% end %></td>
+<td><%= target.username %></td>
+<td><%= target.name %></td>
+<td><%= target.phone %></td>
+<td><%= target.email %></td>
+<td><%= target.member.name %></td>
+<td><%= format_data(target.integral) %></td>                    
+<td align="center">
+ <%if session[:staff_id] && Staff.find(session[:staff_id]).staff_type==1%>
+	 <%= link_to reset_user_path(target),:class=>"btn btn-primary",:remote=>true do%>
+	   <i class="icon-random"></i>重置密码
+	 <% end %>
+	 <br /><br />
+ <% end %>
+ 
+ <%= link_to edit_user_path(target),:class =>"btn btn-info" do%>
+  <i class="icon-edit"></i>修改信息
+ <% end %>
+</td>

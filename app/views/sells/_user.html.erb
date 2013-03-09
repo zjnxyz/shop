@@ -1,0 +1,7 @@
+<% if !target.blank? %>
+  <td><%= target.number %></td>
+  <td><%= target.name %></td>
+  <td><%= target.member.name%></td>
+<% else %>
+  <td colspan="3" > 该会员也被删除 </td>
+<% end %>

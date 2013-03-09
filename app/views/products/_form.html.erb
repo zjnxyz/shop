@@ -1,0 +1,195 @@
+<div class="form-horizontal">
+<%= form_for(@product,:html=>{:id=>"form_validator"}) do |f| %>
+
+      <%= render "share/error_message", :target => @product %>
+
+      <div class="control-group">
+        <%= f.label :number,"商品编码", :class=>"control-label"%>
+        <div class="controls">
+          <%= f.text_field :number,:placeholder=>"商品编码",:class=>"validate[required] " %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :name,"商品名称",:class=>"control-label" %>
+        <div class="controls">
+          <%= f.text_field :name,:placeholder=>"商品名称",:class=>"validate[required] " %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :img_url,"商品图片",:class=>"control-label" %>
+        <div class="controls">
+          <%= f.text_field :img_url,:placeholder=>"商品图片" %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :unit,"单位",:class=>"control-label" %>
+        <div class="controls">
+
+          <select name="unit_id" class="validate[required]">
+            <option value="0">请选择</option>
+            <% Unit.all.each do |unit| %>
+              <% if !@product.unit.blank? && @product.unit.id == unit.id %>
+                 <option value="<%= unit.id %>"  selected="selected"><%= unit.name  %></option>
+              <% else %>
+                 <option value="<%= unit.id %>"><%= unit.name  %></option>
+              <% end %>
+
+               
+            <% end %>
+          </select>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :brand,"品牌",:class=>"control-label " %>
+        <div class="controls">
+          <select name="brand_id" class="validate[required]">
+            <option value="0">请选择</option>
+            <% Brand.all.each do |brand| %>
+              <% if !@product.brand.blank? && @product.brand.id == brand.id %>
+                 <option value="<%= brand.id %>"  selected="selected"><%= brand.name  %></option>
+              <% else %>
+                 <option value="<%= brand.id %>"><%= brand.name  %></option>
+              <% end %>
+            <% end %>
+          </select>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :category,"产品",:class=>"control-label" %>
+        <div class="controls">
+
+          <select name="category_id" ,class="validate[required]" >
+            <option value="0">请选择</option>
+            <% Category.all.each do |category| %>
+               <% if !@product.category.blank? && @product.category.id == category.id %>
+                 <option value="<%= category.id %>"  selected="selected"><%= category.name %></option>
+              <% else %>
+                 <option value="<%=category.id %>"><%= category.name  %></option>
+              <% end %>
+            <% end %>
+          </select>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :purchase_price,"进货价格",:class=>"control-label" %>
+        <div class="controls">
+          <span class="add-on">￥</span>
+          <%= f.text_field :purchase_price,:class=>"span2",:class=>"validate[required] " %>
+          <span class="add-on">.00</span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :sell_price,"预售价格",:class=>"control-label" %>
+        <div class="controls">
+          <span class="add-on">￥</span>
+          <%= f.text_field :sell_price,:class=>"span2",:class=>"validate[required] " %>
+          <span class="add-on">.00</span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :percentage_price,"最低售价",:class=>"control-label" %>
+        <div class="controls">
+          <span class="add-on">￥</span>
+          <%= f.text_field :percentage_price,:class=>"span2",:class=>"validate[required] " %>
+          <span class="add-on">.00</span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :discount,"商品折扣",:class=>"control-label" %>
+        <div class="controls">
+          <%= f.text_field :discount,{:class=>"span2 validate[required]", :placeholder=>"例如：0.95,无折扣则为1." } %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :stock_lower_limit,"库存下线",:class=>"control-label" %>
+        <div class="controls">
+          <%= f.text_field :stock_lower_limit,{:class=>"span2 validate[required]", :placeholder=>"例如：2" } %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :over_royalty_percentage,"超过最低价销售提成比例",:class=>"control-label" %>
+        <div class="controls">
+          <%= f.text_field :over_royalty_percentage,{:class=>"span2", :placeholder=>"例如：0.2" } %>
+        </div>
+      </div>
+
+      <div class="control-group">
+
+        <label class="control-label" for="product[is_rural_areas]">是否为三下乡产品</label>
+         <div class="controls">
+          <% if @product.is_rural_areas %>
+            <label class="radio">
+              <input type="radio" name="product[is_rural_areas]" value="1" checked="checked" >
+              <span class="metro-radio">是</span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="product[is_rural_areas]"  value="0" >
+              <span class="metro-radio">否</span>
+           </label>       
+          <% else %>
+              <label class="radio">
+                <input type="radio" name="product[is_rural_areas]" value="1" >
+                <span class="metro-radio">是</span>
+              </label>
+              <label class="radio">
+                <input type="radio" name="product[is_rural_areas]"  value="0" checked>
+                <span class="metro-radio">否</span>
+              </label>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="product[status]">是否该启用商品</label>
+        <div class="controls">
+          <% if @product.status %>
+            <label class="radio">
+              <input type="radio" name="product[status]" value="1" checked="checked">
+              <span class="metro-radio">是</span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="product[status]"  value="0"  >
+              <span class="metro-radio">否</span>
+            </label>
+          <% else %>
+            <label class="radio">
+              <input type="radio" name="product[status]" value="1">
+              <span class="metro-radio">是</span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="product[status]"  value="0" checked="checked" >
+              <span class="metro-radio">否</span>
+            </label>
+          <% end %>
+          
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="inputEmail">商品详细图片</label>
+        <div class="controls">
+          <input type="text"  placeholder="例如：0.95"><br><br>
+          <input type="text"  placeholder="例如：0.95"><br><br>
+          <input type="text"  placeholder="例如：0.95"><br><br>
+          <input type="text"  placeholder="例如：0.95"><br><br>
+          <input type="text"  placeholder="例如：0.95">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="controls">
+          <%= f.submit "保存",:class=>"btn btn-primary"%>
+        </div>
+      </div>
+<% end %>
+</div>

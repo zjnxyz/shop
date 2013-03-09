@@ -1,0 +1,67 @@
+<% if locals[:lay]== 1 %>
+  <% if locals[:i]%3==1 %>
+      <tr class="error">
+        <%= render "products/product_one", :target =>product %>
+      </tr>
+  <% elsif locals[:i]%3==2%>
+      <tr class="warning">
+        <%= render "products/product_one", :target =>product %>
+      </tr>
+  <% else %>
+      <tr class="info">
+        <%= render "products/product_one", :target =>product %>
+      </tr>
+  <% end %>
+  <% locals[:i]+=1 %>
+<% elsif locals[:lay]==2 %>
+
+ <% if locals[:i]%3==1 %>
+      <tr class="error">
+        <%= render "products/query", :target =>product %>
+      </tr>
+  <% elsif locals[:i]%3==2%>
+      <tr class="warning">
+        <%= render "products/query", :target =>product %>
+      </tr>
+  <% else %>
+      <tr class="info">
+        <%= render "products/query", :target =>product %>
+      </tr>
+  <% end %>
+  <% locals[:i]+=1 %>
+
+<% elsif locals[:lay]==3 %>
+
+ <% if locals[:i]%3==1 %>
+      <tr class="error">
+        <%= render "products/check", :target =>product %>
+      </tr>
+  <% elsif locals[:i]%3==2%>
+      <tr class="warning">
+        <%= render "products/check", :target =>product %>
+      </tr>
+  <% else %>
+      <tr class="info">
+        <%= render "products/check", :target =>product %>
+      </tr>
+  <% end %>
+  <% locals[:i]+=1 %>
+
+ <% elsif locals[:lay]==4 %>
+
+ <% if locals[:i]%3==1 %>
+      <tr class="error">
+        <%= render "products/low_stack", :target =>product %>
+      </tr>
+  <% elsif locals[:i]%3==2%>
+      <tr class="warning">
+        <%= render "products/low_stack", :target =>product %>
+      </tr>
+  <% else %>
+      <tr class="info">
+        <%= render "products/low_stack", :target =>product %>
+      </tr>
+  <% end %>
+  <% locals[:i]+=1 %>
+
+<% end %>

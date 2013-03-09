@@ -1,0 +1,21 @@
+ <td><%=target.id %></td>
+              <td>
+                <%= target.name %>
+              </td>
+              <td><%= target.discount %></td>
+              <td>
+                <%= target.conversion_rate %>
+              </td>
+              <td><%= format_date(target.created_at) %></td>
+
+              <td align="center">
+                <%= link_to edit_member_path(target),:class=>"btn btn-primary" do %> 
+                   <i class="icon-edit"> </i> 修改
+                <% end %>
+                <% if false %>
+                   <br><br>
+                    <%= link_to '删除', target, method: :delete,:class=>"btn ", data: { confirm: 'Are you sure?' } %>
+
+                <% end %>
+                
+              </td>

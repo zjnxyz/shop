@@ -1,0 +1,45 @@
+<div class="page-header">
+  <h3>预订清单</h3>
+  <% if !session[:staff_id].blank? %>
+      <div>
+         <%= form_for @search, :remote => true,:url => sells_url, :html => {:method => :get} do |f| %>
+              会员编号：<%= f.search_field :user_number_gt,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+              会员姓名：<%= f.search_field :user_name_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+              <br><br>
+              商品编号：<%= f.search_field :product_number_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+              商品名称：<%= f.search_field :product_name_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+              <%= f.submit "查找",:class =>"btn btn-success" %>
+           <% end %> 
+      </div>
+  <% end %>
+</div>
+<div>
+<blockquote>
+  <p>系统会自动删除那些超过最后付款期限的预订单.</p>
+</blockquote>
+ <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>商品编号</th>
+      <th>商品</th>
+      <th>预订价格</th>
+      <th>数量</th>
+      <th>预订时间</th>
+      <th>最迟付款时间</th>
+      <% if !session[:staff_id].blank? %>
+         <th>会员编号</th>
+         <th>会员姓名</th>
+      <% end %>
+      <th>操作</th>
+    </tr>
+    </thead>
+    <tbody id="search">
+      <%= render @orders,:locals => {:i=>0} %>           
+    </tbody>
+  </table>
+  <% if !session[:staff_id].blank? %>
+      <div id="page">
+         <%= paginate @orders %>
+      </div>
+  <% end %>
+</div>

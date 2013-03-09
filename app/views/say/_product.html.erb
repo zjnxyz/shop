@@ -1,0 +1,31 @@
+ <div class="thumbnail span3 ">
+ 	<%= image_tag img_url(target.img_url) %>
+    <div class="caption">
+	    <h4><%= target.name %></h4>
+	    <p><%= target.summary%></p>
+	    <p><strong>库存数量：</strong>
+	      	<span class="badge badge-success">
+	      		<%= format_data target.stock_quantity %>
+	        </span> <%=target.unit.name %>
+	    </p>
+	    <% if target.is_rural_areas %>
+	     <p><span class="label label-important">三下乡产品</span></p>
+	    <% end %>
+	     <%= form_for @order,:url =>"/orders",:remote=>true,:method=>"post" do |f| %>
+	       <p><strong>预定价格：</strong>
+             <%= f.hidden_field :sum, :value=>target.sell_price %>
+	      	 <span class="badge badge-warning"><%= target.sell_price %></span> 元
+	       </p>
+	       <% if !target.stock_quantity.blank? && target.stock_quantity.to_i > 0 %>
+	           <%= hidden_field_tag(:p_id,target.id) %>
+		       <p><strong>数量:</strong>
+		       	<%= f.number_field :amount,:max=>2,:value=>1,:size=>"5" %>（最多两台）
+		       <p>
+		       <%= f.submit "预订",:class=>"btn btn-primary" %>
+		       <a href="#" class="btn">详细</a>
+	       <% end %>
+	      
+	     <% end %>
+	   
+    </div>
+</div>

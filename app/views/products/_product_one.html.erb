@@ -1,0 +1,26 @@
+ <td><%= target.number %></td>
+ <td>
+                <a class="tile wide imagetext wideimage" href="/products/<%= target.id %>">
+                  <%= image_tag img_url(target.img_url),:class=>"img-rounded" %>
+                  <div class="textover-wrapper">
+                    <div class="text2"><%= target.name %></div>
+                  </div>
+                </a>
+              </td>
+              <td><%= target.summary %></td>
+              <td><%= target.brand.name %></td>
+              <td><%= target.category.name %></td>
+              <td><%= product_status target.status %></td>
+              <td>￥<%= target.sell_price  %></td>
+              <td align="center">
+                <br>
+                <%= link_to edit_product_path(target),:class=>"btn btn-primary" do%>
+                <i class="icon-edit" ></i>修改
+                <% end %>
+                <% if false %>
+                  <br><br>
+                  <%= link_to target, method: :delete,:class=>"btn btn-inverse", data: { confirm: '是否删除?' } do%>
+                   <i class="icon-trash"></i>删除
+                  <%end%>
+                <% end %>
+              </td>

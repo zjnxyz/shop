@@ -1,0 +1,33 @@
+<% if locals[:lay]== 1 %>
+  <% if locals[:i]%3==1 %>
+      <tr class="error">
+        <%= render "applications/index_user", :target =>application %>
+      </tr>
+  <% elsif locals[:i]%3==2%>
+      <tr class="warning">
+        <%= render "applications/index_user", :target =>application %>
+      </tr>
+  <% else %>
+      <tr class="info">
+        <%= render "applications/index_user", :target =>application %>
+      </tr>
+  <% end %>
+  <% locals[:i]+=1 %>
+<% elsif locals[:lay]=2 %>
+
+  <% if locals[:i]%3==1 %>
+      <tr class="error">
+        <%= render "applications/application_one", :target =>application %>
+      </tr>
+  <% elsif locals[:i]%3==2%>
+      <tr class="warning">
+        <%= render "applications/application_one", :target =>application %>
+      </tr>
+  <% else %>
+      <tr class="info">
+        <%= render "applications/application_one", :target =>application %>
+      </tr>
+  <% end %>
+  <% locals[:i]+=1 %>
+  
+<% end %>

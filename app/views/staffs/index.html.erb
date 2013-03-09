@@ -1,0 +1,39 @@
+  <div class="page-header">
+    <h1>员工清单</h1>
+  </div>
+  <div>   
+    <%= form_for @search, :remote => true,:url => staffs_url, :html => {:method => :get} do |f| %>
+      员工编号：<%= f.search_field :number_gt,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+      姓名：<%= f.search_field :name_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+      <%= f.submit "查找",:class =>"btn" %>
+    <% end %>     
+      
+  </div>
+
+  <div id="notice_message">
+
+  </div>
+
+           
+    <div>
+      <table class="table table-bordered">
+        <thead>
+            <tr>
+              <th>员工编号</th>
+              <th>姓名</th>
+              <th>出生日期</th>
+              <th>家庭住址</th>
+              <th>上岗时间</th>
+              <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="search">
+           <%= render @staffs,:locals => {:i=>0} %>           
+        </tbody>
+    </table>
+    <div id="page" class="pagination">
+      <%= paginate @staffs %>
+    </div>
+    
+
+ </div>

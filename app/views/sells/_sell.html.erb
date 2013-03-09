@@ -1,0 +1,51 @@
+            <% if locals[:lay] == 1 %>
+
+             <% if locals[:i]%3==1 %>
+                <tr class="error">
+                    <%= render "sells/sell_one", :target =>sell %>
+                </tr>
+              <% elsif locals[:i]%3==2%>
+                <tr class="warning">
+                    <%= render "sells/sell_one", :target =>sell %>
+                </tr>
+              <% else %>
+                <tr class="info">
+                    <%= render "sells/sell_one", :target =>sell %>
+                </tr>
+              <% end %>
+              <% locals[:i]+=1 %>
+            <% elsif locals[:lay] == 2 %>
+
+              <% if locals[:i]%3==1 %>
+                <tr class="error">
+                    <%= render "sells/sell_user", :target =>sell %>
+                </tr>
+              <% elsif locals[:i]%3==2%>
+                <tr class="warning">
+                    <%= render "sells/sell_user", :target =>sell %>
+                </tr>
+              <% else %>
+                <tr class="info">
+                    <%= render "sells/sell_user", :target =>sell %>
+                </tr>
+              <% end %>
+              <% locals[:i]+=1 %>
+
+             <% elsif locals[:lay] == 3 %>
+
+              <% if locals[:i]%3==1 %>
+                <tr class="error">
+                    <%= render "sells/total_sell", :target =>sell %>
+                </tr>
+              <% elsif locals[:i]%3==2%>
+                <tr class="warning">
+                    <%= render "sells/total_sell", :target =>sell %>
+                </tr>
+              <% else %>
+                <tr class="info">
+                    <%= render "sells/total_sell", :target =>sell %>
+                </tr>
+              <% end %>
+              <% locals[:i]+=1 %>
+              
+            <% end %>

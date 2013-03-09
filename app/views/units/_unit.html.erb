@@ -1,0 +1,14 @@
+              <% if locals[:i]%3==1 %>
+                <tr class="error">
+                    <%= render "units/unit_one", :target =>unit %>
+                </tr>
+              <% elsif locals[:i]%3==2%>
+                <tr class="warning">
+                    <%= render "units/unit_one", :target =>unit %>
+                </tr>
+              <% else %>
+                <tr class="info">
+                    <%= render "units/unit_one", :target =>unit %>
+                </tr>
+              <% end %>
+              <% locals[:i]+=1 %>

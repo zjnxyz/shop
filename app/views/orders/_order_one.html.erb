@@ -1,0 +1,35 @@
+  <% if Time.now-target.end_time>0 %>
+     <% Order.destroy(target.id) %>
+  <% else %>
+
+  <td><%= target.product.number %></td>
+  <td>
+    <a class="tile wide imagetext wideimage" href="/products/<%= target.id %>">
+      <%= image_tag img_url(target.product.img_url),:class=>"img-rounded" %>
+      <div class="textover-wrapper">
+        <div class="text2"><%= target.product.name %></div>
+      </div>
+    </a>
+  </td>
+  <td>￥<%= target.sum %></td>
+  <td><%= target.amount %></td>
+  <td><%= format_date target.created_at %></td>
+  <td><%= format_date target.end_time %></td>
+  <% if !session[:staff_id].blank? %>
+   <td><%= target.user.number%></td>
+   <td><%= target.user.name%></td>
+  <% end %>
+  <td align="center">
+    <br>
+    <%= link_to target, method: :delete,:class=>"btn btn-danger", data: { confirm: '是否真的要取消订单?' } do%>
+      <i class="icon-trash"></i>取消订单
+    <%end%>
+    <% if !session[:staff_id].blank? %>
+       <br><br>
+        <%= link_to pre_add_sell_product_path(target.product),:class=>"btn btn-success" do%>
+       <i class=" icon-inbox"></i>处理订单
+       <%end%>
+    <% end %>
+  </td>
+
+  <% end %>

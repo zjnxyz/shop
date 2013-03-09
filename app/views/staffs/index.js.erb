@@ -1,0 +1,3 @@
+$("#search").html("<%=j render @staffs,:locals => {:i=>0} %>")
+$("#page").html("<%=j paginate @staffs %>")
+$('#search').css({'background-color':'#88ff88'}).animate({'background-color':'#114411'}, 1000);

@@ -1,0 +1,14 @@
+              <% if locals[:i]%3==1 %>
+                <tr class="error">
+                    <%= render "categories/category_one", :target =>category %>
+                </tr>
+              <% elsif locals[:i]%3==2%>
+                <tr class="warning">
+                  <%= render "categories/category_one", :target =>category %>
+                </tr>
+              <% else %>
+                <tr class="info">
+                    <%= render "categories/category_one", :target =>category %>
+                </tr>
+              <% end %>
+              <% locals[:i]+=1 %>

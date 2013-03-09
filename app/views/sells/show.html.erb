@@ -1,0 +1,110 @@
+<%= render "share/notice_message", :target => notice %>
+<div class="page-header">
+  <h3>销售单</h3>
+</div>  
+
+<div class="form-horizontal">
+  <%= form_tag(:controller =>"sells",:action =>"check_sell") do%>
+            <%= hidden_field_tag(:s_id, @sell.id) %>
+             <div class="control-group">
+                 <label class="control-label" for="inputEmail">商品编号</label>
+                 <div class="controls">
+                   <span class="input-xlarge uneditable-input"><%= @sell.product.number %></span>
+                 </div>
+              </div>
+                
+                <div class="control-group">
+                 <label class="control-label" for="inputEmail">商品</label>
+                 <div class="controls">
+                   <div class="thumbnail">
+                     <%=image_tag(img_url(@sell.product.img_url)) %>
+                     <div class="caption">
+                       <h4><%= @sell.product.name %></h4>
+                     </div>
+                   </div>
+                 </div>
+                </div>
+
+                 <div class="control-group">
+                 <label class="control-label" for="inputEmail">会员编号</label>
+                 <div class="controls">
+                   <span class="input-xlarge uneditable-input"><%= @sell.user.number %></span>
+                 </div>
+                </div>
+                
+                 <div class="control-group">
+                 <label class="control-label" for="inputEmail">会员姓名</label>
+                 <div class="controls">
+                   <span class="input-xlarge uneditable-input"><%= @sell.user.name %></span>
+                 </div>
+                </div>
+                
+                 <div class="control-group">
+                 <label class="control-label" for="inputEmail">会员类型</label>
+                 <div class="controls">
+                   <span class="input-xlarge uneditable-input"><%= @sell.user.member.name%></span>
+                 </div>
+                </div>
+                
+                 <div class="control-group">
+                 <label class="control-label" for="inputEmail">预售价</label>
+                 <div class="controls">
+                    <span class="input-xlarge uneditable-input"><%= @sell.sum %></span>
+                  </div>
+                 </div>
+
+                 <div class="control-group">
+                 <label class="control-label" for="inputEmail">数量</label>
+                 <div class="controls">
+                    <%= hidden_field_tag(:amount, @sell.amount) %>
+                    <span class="input-xlarge uneditable-input"><%= @sell.amount %></span>
+                  </div>
+                 </div>
+   
+                
+                <div class="control-group">
+                 <label class="control-label" for="inputEmail">实际折扣</label>
+                 <div class="controls">
+                  <span class="input-xlarge uneditable-input"><%= @sell.real_discount%></span>
+                 </div>
+                </div>
+                
+                <div class="control-group">
+                 <label class="control-label" for="inputEmail">是否为三下乡产品</label>
+                 <div class="controls">
+                  <% if @sell.product.is_rural_areas %>
+                   <span class="input-xlarge uneditable-input">是</span>
+                  <% else %>
+                   <span class="input-xlarge uneditable-input">否</span>
+                  <% end %>
+                  
+                 </div>
+                </div>
+                
+                
+                <div class="control-group">
+                 <label class="control-label" for="inputEmail">使用积分：</label>
+                 <div class="controls">
+                  <span class="input-xlarge uneditable-input"> <%= @sell.use_integral%></span>
+                 </div>
+                </div>
+                
+                <div class="control-group">
+                 <label class="control-label" for="inputEmail">应付金额：</label>
+                 <div class="controls">
+                  <div class="input-prepend input-append">
+                     <span class="add-on">￥</span>
+                     <input class="span2" name="actual_sum" type="text" value="<%= @sell.actual_sum%>">
+                    <span class="add-on">.00</span>
+                 </div>
+                </div>
+                </div>
+ 
+               <div class="control-group">
+                <div class="controls">
+                 <button type="submit" class="btn btn-primary">确认销售</button>
+                </div>
+              </div>
+  <% end %>
+
+</div>

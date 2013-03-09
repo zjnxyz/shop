@@ -1,0 +1,35 @@
+<%= form_for(@sell) do |f| %>
+  <%= render "share/error_message", :target => @sell %>
+
+  <div class="field">
+    <%= f.label :amount %><br />
+    <%= f.number_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :actual_sum %><br />
+    <%= f.text_field :actual_sum %>
+  </div>
+  <div class="field">
+    <%= f.label :sum %><br />
+    <%= f.text_field :sum %>
+  </div>
+  <div class="field">
+    <%= f.label :remark %><br />
+    <%= f.text_area :remark %>
+  </div>
+  <div class="field">
+    <%= f.label :user %><br />
+    <%= f.text_field :user %>
+  </div>
+  <div class="field">
+    <%= f.label :staff %><br />
+    <%= f.text_field :staff %>
+  </div>
+  <div class="field">
+    <%= f.label :product %><br />
+    <%= f.text_field :product %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

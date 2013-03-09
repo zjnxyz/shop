@@ -1,0 +1,45 @@
+<div class="page-header">
+  <h3>申请清单</h3>
+</div>
+<%= render "share/notice_message", :target => notice %>
+
+<% if  @applications.blank? %>
+   <p class="lead">您还没有任何申请单！</p>
+<% else %>
+    <!--
+    <%= form_for @search, :remote => true,:url => application_url, :html => {:method => :get} do |f| %>
+          会员编号：<%= f.search_field :user_number_gt,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+          会员姓名：<%= f.search_field :user_name_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+          <br><br>
+          销售单号：<%= f.search_field :sell_id_gteq,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+          商品名称：<%= f.search_field :sell_product_name_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+          
+
+        <%= f.submit "查找",:class =>"btn btn-success" %>
+     <% end %>
+    -->
+<a href="#" class="btn btn-info" >未处理的申请</a>
+<a href="#" class="btn btn-success" >已处理的申请</a>
+<hr>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>销售单号</th>
+      <th>商品</th>
+      <th>申请类型</th>
+      <th>申请时间</th>
+      <th>会员编号</th>
+      <th>会员姓名</th>
+      <th>状态</th>
+      <th>操作</th>
+    </tr>
+    </thead>
+    <tbody id="search">
+      <%= render @applications,:locals => {:i=>0,:lay=>2} %>           
+    </tbody>
+  </table>
+   <div id="page" class="pagination">
+        <%= paginate @applications %>
+    </div>
+
+<% end %>

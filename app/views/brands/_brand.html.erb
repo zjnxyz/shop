@@ -1,0 +1,14 @@
+              <% if locals[:i]%3==1 %>
+                <tr class="error">
+                    <%= render "brands/brand_one", :target =>brand %>
+                </tr>
+              <% elsif locals[:i]%3==2%>
+                <tr class="warning">
+                    <%= render "brands/brand_one", :target =>brand %>
+                </tr>
+              <% else %>
+                <tr class="info">
+                    <%= render "brands/brand_one", :target =>brand %>
+                </tr>
+              <% end %>
+              <% locals[:i]+=1 %>

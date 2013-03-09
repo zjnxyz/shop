@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  amount: 1
+  actual_sum: 1.5
+  sum: 1.5
+  remark: MyText
+  user: 
+  staff: 
+  product: 
+
+two:
+  amount: 1
+  actual_sum: 1.5
+  sum: 1.5
+  remark: MyText
+  user: 
+  staff: 
+  product: 

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sell: 
+  user: 
+  staff: 
+  type: 1
+  remark: MyText
+  is_handle: false
+
+two:
+  sell: 
+  user: 
+  staff: 
+  type: 1
+  remark: MyText
+  is_handle: false

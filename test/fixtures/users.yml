@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  number: 1
+  name: MyString
+  phone: 1
+  email: MyString
+  pinyin_initials: MyString
+  member: 
+  integral: 1
+  remark: MyText
+
+two:
+  number: 1
+  name: MyString
+  phone: 1
+  email: MyString
+  pinyin_initials: MyString
+  member: 
+  integral: 1
+  remark: MyText

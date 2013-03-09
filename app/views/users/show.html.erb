@@ -1,0 +1,88 @@
+
+
+<div class="page-header">
+  <h1>基本信息</h1>
+</div>
+<%= render "share/notice_message", :target => notice %>
+<table class="table table-bordered">
+              <tr>
+                <td width="120px">会员编号</td>
+                <td>
+                 <span class="text"><%= @user.number %></span>
+               </td>
+              </tr>
+              <tr>
+                <td width="120px">
+                   用户名
+                </td>
+                <td>
+                   <span class="text-big"><%= @user.username %></span>
+                </td>
+              </tr>
+              <tr>
+                <td width="120px">
+                    真实姓名
+                </td>
+                <td>
+                   <span class="text-big"><%= @user.name %></span>
+                </td>
+              </tr>
+              
+               <tr>
+                <td width="120px">
+                   手机
+                </td>
+                <td>
+                   <span class="text-big"><%= @user.phone %></span>
+                </td>
+              </tr>
+              
+               <tr>
+                <td width="120px">
+                   邮箱
+                </td>
+                <td>
+                   <span class="text-big"><%= @user.email %></span>
+                </td>
+              </tr>
+              
+               <tr>
+                <td width="120px">
+                   会员类型
+                </td>
+                <td>
+                   <span class="badge badge-important"><%= @user.member.name %></span>
+                </td>
+              </tr>
+              
+              <tr>
+                <td width="120px">
+                   积分
+                </td>
+                <td>
+                   <span class="badge badge-success"><%= format_data(@user.integral) %></span>
+                </td>
+              </tr>
+              
+              <tr>
+                <td width="120px">
+                  备注
+                </td>
+                <td>
+                   <span class="text-big"><%= @user.remark %></span>
+                </td>
+              </tr>
+              
+              
+              <tr >
+                <td colspan="2"  align="center">
+                  <%= link_to '修改', edit_user_path(@user),:class =>"btn btn-primary" %> 
+                </td>
+                
+              </tr>
+              
+    </table>
+
+
+
+

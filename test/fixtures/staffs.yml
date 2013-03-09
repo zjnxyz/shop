@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  number: 1
+  name: MyString
+  pinyin_initials: MyString
+  sex: 1
+  birthday: 2013-01-05 19:43:04
+  card_id: MyString
+  address: MyString
+  phone: 1
+  email: MyString
+  start_work_time: 2013-01-05 19:43:04
+  low_salary: 1.5
+  img_url: MyString
+  allowance: 1.5
+  remark: MyText
+
+two:
+  number: 1
+  name: MyString
+  pinyin_initials: MyString
+  sex: 1
+  birthday: 2013-01-05 19:43:04
+  card_id: MyString
+  address: MyString
+  phone: 1
+  email: MyString
+  start_work_time: 2013-01-05 19:43:04
+  low_salary: 1.5
+  img_url: MyString
+  allowance: 1.5
+  remark: MyText

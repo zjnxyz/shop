@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  number: MyString
+  purchase_price: 1.5
+  sell_price: 1.5
+  stock_quantity: 1
+  status: false
+  is_percentage: false
+  percentage_price: 1.5
+  over_royalty_percentage: 1.5
+  is_rural_areas: false
+  subsidies_proportion: 1.5
+  pinyin_initials: MyString
+  stock_lower_limit: 1
+  img_url: MyString
+  summary: MyText
+  unit: 
+  category: 
+  brand: 
+
+two:
+  name: MyString
+  number: MyString
+  purchase_price: 1.5
+  sell_price: 1.5
+  stock_quantity: 1
+  status: false
+  is_percentage: false
+  percentage_price: 1.5
+  over_royalty_percentage: 1.5
+  is_rural_areas: false
+  subsidies_proportion: 1.5
+  pinyin_initials: MyString
+  stock_lower_limit: 1
+  img_url: MyString
+  summary: MyText
+  unit: 
+  category: 
+  brand: 

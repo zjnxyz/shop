@@ -1,0 +1,39 @@
+<div class="page-header">
+    <h3>退货清单</h3>
+    <div>
+        <%= form_for @search, :remote => true,:url => sells_url, :html => {:method => :get} do |f| %>
+          会员编号：<%= f.search_field :user_number_gt,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+          会员姓名：<%= f.search_field :user_name_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+          <br><br>
+          商品编号：<%= f.search_field :sell_product_number_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+          商品名称：<%= f.search_field :sell_product_name_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+          <%= f.submit "查找",:class =>"btn btn-success" %>
+       <% end %> 
+    </div>
+ </div>
+<div>
+
+               <table class="table table-bordered">
+                 <thead>
+                   <tr>
+                     <th>商品编号</th>
+                     <th>商品</th> 
+                     <th>会员编号</th>                    
+                     <th>会员姓名</th>
+                     <th>退货时间</th>
+                     <th>退货数量</th>
+                     <th>退货金额</th>
+                     <th>处理人</th>
+                     
+                   </tr>
+                 </thead>
+                 <tbody id="search">
+                    <%= render @repurchases,:locals => {:i=>0} %>
+                 </tbody>
+               </table>
+
+               <div id="page" class="pagination">
+                <%= paginate @repurchases %>
+               </div>
+</div>
+

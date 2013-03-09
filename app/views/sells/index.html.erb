@@ -1,0 +1,43 @@
+<div class="page-header">
+    <h3>销售清单</h3>
+<div>
+        <%= form_for @search, :remote => true,:url => sells_url, :html => {:method => :get} do |f| %>
+          会员编号：<%= f.search_field :user_number_gt,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+          会员姓名：<%= f.search_field :user_name_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+          <br><br>
+          商品编号：<%= f.search_field :product_number_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+          商品名称：<%= f.search_field :product_name_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+          
+
+          <%= f.submit "查找",:class =>"btn btn-success" %>
+       <% end %> 
+    </div>
+ </div>
+<div>
+               <table class="table table-bordered">
+                 <thead>
+                   <tr>
+                     <th>商品编号</th>
+                     <th>商品</th> 
+                     <th>会员编号</th>                    
+                     <th>会员姓名</th>
+                     <th>会员类型</th>
+                     <th>销售时间</th>
+                     <th>真实折扣</th>
+                     <th>积分</th>
+                     <th>预售金额</th>
+                     <th>实收金额</th>
+                     <th>状态</th>
+                     <th width="30px">操作</th>
+
+                   </tr>
+                 </thead>
+                 <tbody id="search">
+                    <%= render @sells,:locals => {:i=>0,:lay=>1} %>
+                 </tbody>
+               </table>
+
+               <div id="page" class="pagination">
+                <%= paginate @sells %>
+               </div>
+             </div>

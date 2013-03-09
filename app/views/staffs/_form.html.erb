@@ -1,0 +1,180 @@
+<%= form_for(@staff,:html=>{:id=>"form_validator"}) do |f| %>
+  <%= render "share/error_message", :target => @staff %>
+
+      
+<table class="table table-bordered">
+  <% if params[:id] != nil %>
+    <tr>
+      <td width="120px">员工编号</td>
+      <td>
+        <%= f.text_field :number, {:class=>"span3",:disabled=>"true"} %>
+      </td>
+    </tr>
+  <% end %>
+ 
+  <tr>
+    <td width="120px">
+      姓名
+    </td>
+    <td>
+      <%= f.text_field :name, :class =>"span3 validate[required,minSize[2]]" %>
+    </td>
+  </tr>
+
+
+  <tr>
+    <td width="120px">
+      手机
+    </td>
+    <td>
+      <%= f.telephone_field :phone, :class =>"span3 validate[required]",:placeholder =>"手机号码" %>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="120px">
+      邮箱
+    </td>
+    <td>
+      <%= f.email_field :email, :class =>"span3 validate[required,custom[email]]",:placeholder =>"邮箱" %>
+    </td>
+  </tr>
+
+
+  <tr>
+    <td width="120px">
+      头像
+    </td>
+    <td>
+      <%= f.text_field :img_url, :class =>"span3" %>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="120px">
+      性别
+    </td>
+    <td>
+      <% if @staff.sex == 2 %>
+          <label class="radio">
+            <input type="radio" name="staff[sex]" id="optionsRadios1" value="2" >
+            <span class="metro-radio">男</span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="staff[sex]" id="optionsRadios2" value="1" checked>
+            <span class="metro-radio">女</span>
+          </label>
+
+       <% else %>
+
+          <label class="radio">
+            <input type="radio" name="staff[sex]" id="optionsRadios3" value="1" checked>
+            <span class="metro-radio">男</span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="staff[sex]" id="optionsRadios4" value="2">
+            <span class="metro-radio">女</span>
+          </label>
+
+      <% end %>
+
+    </td>
+  </tr>
+
+  <tr>
+    <td width="120px">
+      出生日期
+    </td>
+    <td>
+      <%= f.text_field :birthday, :class =>"span3 date validate[required,confirm[date]]" %>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="120px">
+      身份证号
+    </td>
+    <td>
+      <%= f.text_field :card_id,:class =>"span3 validate[required,confirm[onlyNumber]]" %>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="120px">
+      家庭住址
+    </td>
+    <td>
+      <%= f.text_field :address, :class =>"span3" %>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="120px">
+      上岗时间
+    </td>
+    <td>
+    <% if params[:id] != nil %>
+      <%= f.text_field :start_work_time, {:class=>"span3 date",:disabled=>"true"} %>
+    <% else %>
+      <%= f.text_field :start_work_time, {:class=>"span3 date validate[required,confirm[date]]"} %>
+    <% end %>
+      
+
+    </td>
+  </tr>
+
+  <tr>
+    <td width="120px">
+      底薪
+    </td>
+    <td>
+      <% if Staff.find_by_id(session[:staff_id]).staff_type ==1 %>
+        <%= f.text_field :low_salary,{:class =>"span3 validate[required]"} %>
+      <% else %>
+        <%= f.text_field :low_salary,{:class =>"span3",:disabled=>"true"} %>
+      <% end %>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td width="120px">
+      补助
+    </td>
+    <td>
+
+      <% if Staff.find_by_id(session[:staff_id]).staff_type ==1 %>
+        <%= f.text_field :allowance,{:class =>"span3 validate[required]"} %>
+      <% else %>
+        <%= f.text_field :allowance,{:class =>"span3",:disabled=>"true"} %>
+      <% end %>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td width="120px">
+      备注
+    </td>
+    <td>
+      <%= f.text_area :remark, :rows =>5 %>
+
+    </td>
+  </tr>
+
+
+  <tr >
+    <td colspan="2"  align="center">
+      <button class="btn btn-primary" type="submit">保存</button>
+    </td>
+
+  </tr>
+
+</table>
+
+
+<% end %>
+
+
+
+

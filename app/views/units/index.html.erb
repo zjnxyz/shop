@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h1>单位清单</h1>
+
+</div>
+
+<%= render "share/notice_message", :target => notice %>
+
+
+<div>
+  <div align="right">
+    <%= link_to new_unit_path, :class=>"btn btn-success btn-large" do %>
+      <i class="icon-plus"></i>添加
+    <% end %>
+
+  </div>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>单位编码</th>
+      <th>产品名</th>
+      <th>创建日期</th>
+      <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+      <%= render @units,:locals => {:i=>0} %>
+    </tbody>
+  </table>
+</div>
+
+

@@ -1,0 +1,10 @@
+<%= render "share/notice_message", :target => notice %>
+
+<p>
+  <b>品牌名:</b>
+  <%= @unit.name %>
+</p>
+
+
+<%= link_to '显示', @unit, :class=>"btn btn-large btn-primary" %> |
+<%= link_to '返回', units_path,:class=>"btn btn-large" %>

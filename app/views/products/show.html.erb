@@ -1,0 +1,117 @@
+<div class="page-header">
+  <h1>商品详细信息</h1>
+</div>
+
+<%= render "share/notice_message", :target => notice %>
+
+<div class="form-horizontal">
+
+  <div class="control-group">
+    <label class="control-label" for="number">商品编号</label>
+    <div class="controls">
+      <span class="input-xlarge uneditable-input"><%= @product.number %></span>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="name">商品</label>
+    <div class="controls">
+      <div class="thumbnail">
+        <%= image_tag(img_url(@product.img_url)) %>
+        <div class="caption">
+          <h3><%= @product.name %></h3>
+          <p><%= @product.summary || "没有填写商品简介"%></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="inputEmail">进货价格</label>
+    <div class="controls">
+      <div class="input-prepend input-append">
+        <span class="add-on">￥</span>
+        <input class="span2"  type="text" disabled="true" value="<%= @product.purchase_price %>">
+        <span class="add-on">.00</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="inputEmail">预售价</label>
+    <div class="controls">
+      <div class="input-prepend input-append">
+        <span class="add-on">￥</span>
+        <input class="span2"  type="text" disabled="true" value="<%= @product.sell_price %>">
+        <span class="add-on">.00</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="inputEmail">最低售价</label>
+    <div class="controls">
+      <div class="input-prepend input-append">
+        <span class="add-on">￥</span>
+        <input class="span2"  type="text" disabled="true" value="<%= @product.percentage_price %>">
+        <span class="add-on">.00</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="number">商品状态</label>
+    <div class="controls">
+      <span class="input-xlarge uneditable-input"><%= product_status @product.status %></span>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="number">是否为三下乡产品</label>
+    <div class="controls">
+      <span class="input-xlarge uneditable-input"><%= product_is_rural_areas @product.is_rural_areas %></span>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="number">商品折扣</label>
+    <div class="controls">
+      <span class="input-xlarge uneditable-input"><%= @product.discount %></span>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="number">库存数量</label>
+    <div class="controls">
+      <span class="input-xlarge uneditable-input"><%= product_stock_lower_limit @product.stock_quantity %></span>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="number">库存下线</label>
+    <div class="controls">
+      <span class="input-xlarge uneditable-input"><%= product_stock_lower_limit @product.stock_lower_limit %></span>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="number">销售量</label>
+    <div class="controls">
+      <span class="input-xlarge uneditable-input"><%= product_stock_lower_limit @product.sales_volume %></span>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="number">超过最低价销售提成比例</label>
+    <div class="controls">
+      <span class="input-xlarge uneditable-input"><%= @product.over_royalty_percentage %></span>
+    </div>
+  </div>
+  <%= link_to '编辑', edit_product_path(@product),:class=>"btn btn-large btn-primary" %> |
+  <%= link_to '返回', products_path,:class=>"btn btn-large btn-inverse" %>
+
+</div>
+
+
+
+

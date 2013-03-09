@@ -1,0 +1,143 @@
+
+
+<div class="page-header">
+  <h1>基本信息</h1>
+</div>
+
+<%= render "share/notice_message", :target => notice %>
+
+
+<div class="thumbnail">
+<%= image_tag(img_url(@staff.img_url))%>
+</div>
+
+<table class="table table-bordered">
+  <tr>
+    <td width="120px">员工编号</td>
+    <td>
+      <span class="text"><%= @staff.number %></span>
+    </td>
+  </tr>
+  <tr>
+    <td width="120px">
+      员工姓名
+    </td>
+    <td>
+      <span class="text-big"><%= @staff.name %></span>
+    </td>
+  </tr>
+  <tr>
+    <td width="120px">
+      拼音缩写
+    </td>
+    <td>
+      <span class="text-big"><%= @staff.pinyin_initials %></span>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="120px">
+      用户权限
+    </td>
+    <td>
+      <span class="badge badge-important"><%= staff_type @staff.staff_type %></span>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="120px">
+      性别
+    </td>
+    <td>
+      <span class="text-big"><%= staff_sex @staff.sex %></span>
+    </td>
+  </tr>
+  <tr>
+    <td width="120px">
+      手机
+    </td>
+    <td>
+      <span class="text-big"><%= @staff.phone %></span>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="120px">
+      邮箱
+    </td>
+    <td>
+      <span class="text-big"><%= @staff.email %></span>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="120px">
+     身份证号
+    </td>
+    <td>
+      <span class="text-big"><%= @staff.card_id %></span>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="120px">
+      出生时间
+    </td>
+    <td>
+      <span class="text-big"><%= format_date(@staff.birthday) %></span>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="120px">
+      地址
+    </td>
+    <td>
+      <span class="text-big"><%= @staff.address %></span>
+    </td>
+  </tr>
+  <tr>
+    <td width="120px">
+      开始工作时间
+    </td>
+    <td>
+      <span class="text-big"><%= format_date(@staff.start_work_time) %></span>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="120px">
+      基本工资
+    </td>
+    <td>
+      <span class="text-big"><%= @staff.low_salary %></span>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="120px">
+      补助
+    </td>
+    <td>
+      <span class="text-big"> <%= @staff.allowance %></span>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="120px">
+      备注
+    </td>
+    <td>
+      <span class="text-big"><%= @staff.remark %></span>
+    </td>
+  </tr>
+
+  <tr >
+    <td colspan="2"  align="center">
+      <%= link_to '修改', edit_staff_path(@staff), :class =>"btn btn-primary" %>
+
+    </td>
+
+  </tr>
+
+</table>

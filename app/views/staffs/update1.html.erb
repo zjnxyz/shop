@@ -1,0 +1,35 @@
+<% if flash[:notice] %>
+    <p class="notice"><%= flash[:notice] %></p>
+<% end %>
+<% if flash[:error] %>
+    <p class="error"><%= flash[:error] %></p>
+<% end %>
+
+<form class="form-horizontal" action="/staffs/update2" method="post">
+  <input name="id" type="hidden"  value="1" />
+  <div class="control-group">
+    <label class="control-label" for="oldPassword">旧密码</label>
+    <div class="controls">
+      <input type="password" id="oldPassword" name="oldPassword" placeholder="旧密码">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="newPassword">新密码</label>
+    <div class="controls">
+      <input type="password" id="newPassword" name="staff[password]" placeholder="新密码">
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="confNewPassword">再输一次新密码</label>
+    <div class="controls">
+      <input type="password" id="confNewPassword" name="staff[password_confirmation]" placeholder="再输一次新密码">
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">Sign in</button>
+    </div>
+  </div>
+</form>

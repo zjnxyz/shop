@@ -1,0 +1,19 @@
+ <td><%=target.id %></td>
+ <td>
+    <div class="thumbnail">
+      <%= image_tag(img_url(target.imgurl)) %>
+      <div class="caption">
+        <h3><%= target.name %></h3>
+      </div>
+    </div>
+  </td>
+  <td><%= format_date(target.created_at) %></td>
+  <td align="center">
+    <%= link_to edit_category_path(target),:class => "btn btn-primary" do %> 
+     <i class="icon-edit"> </i> 修改
+   <% end %>
+   <br><br>
+   <%= link_to target, method: :delete,:class=>"btn btn-inverse", data: { confirm: '你确定要删除吗?' } do %>
+     <i class="icon-trash"> </i> 删除
+  <% end %>
+  </td>

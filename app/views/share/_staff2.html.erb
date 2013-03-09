@@ -1,0 +1,38 @@
+<div class="span3 bs-docs-sidebar">
+      <ul class="nav nav-list bs-docs-sidenav">
+        <li>
+          <a href="/staffs/<%=session[:staff_id]%>"><i class="icon-chevron-right"></i> 基本信息</a>
+        </li>
+        <li><a href="/products/query"><i class="icon-chevron-right"></i> 库存查询</a></li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            会员管理
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/users"><i class="icon-chevron-right"></i>会员清单</a></li>
+            <li>
+              <%= link_to new_user_path do %><i class="icon-chevron-right"></i>增加会员<% end %>
+            </li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            销售管理
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/orders"><i class="icon-chevron-right"></i>预定清单</a></li>
+            <li><a href="/sells"><i class="icon-chevron-right"></i>销售清单</a></li>
+            <li><a href="/repurchases"><i class="icon-chevron-right"></i>退货清单</a></li>
+          </ul>
+        </li>
+        <li><a href="/sells/total_staff_sell"><i class="icon-chevron-right"></i>销售额清单</a></li>
+        <%=render "share/li_menu" %>
+      </ul>
+    </div>
+    <div class="span9">
+      <%= yield %>
+    </div><!--end span9-->

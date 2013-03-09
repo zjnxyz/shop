@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Sell:</b>
+  <%= @application.sell %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @application.user %>
+</p>
+
+<p>
+  <b>Staff:</b>
+  <%= @application.staff %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @application.app_type %>
+</p>
+
+<p>
+  <b>Remark:</b>
+  <%= @application.remark %>
+</p>
+
+<p>
+  <b>Is handle:</b>
+  <%= @application.is_handle %>
+</p>
+
+
+<%= link_to 'Edit', edit_application_path(@application) %> |
+<%= link_to 'Back', applications_path %>

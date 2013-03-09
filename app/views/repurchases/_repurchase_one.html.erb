@@ -1,0 +1,15 @@
+ <td><%= target.sell.product.number %></td>
+ <td>
+    <a class="tile wide imagetext wideimage" href="/products/<%= target.id %>">
+      <%= image_tag(img_url(target.sell.product.img_url)) %>
+      <div class="textover-wrapper">
+        <div class="text2"><%= target.sell.product.name %></div>
+      </div>
+    </a>
+  </td>
+  <td><%= target.user.number %></td>
+  <td><%= target.user.name %></td>
+  <td><%= format_date target.created_at %></td>
+  <td><%= target.amount %></td>
+  <td>￥<%= target.actual_sum  %></td>
+  <td align="center"><%= target.staff.name %></td>

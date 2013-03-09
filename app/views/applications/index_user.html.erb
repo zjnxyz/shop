@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h3>申请清单</h3>
+</div>
+
+<%= render "share/notice_message", :target => notice %>
+
+<% if  @applications.blank? %>
+   <p class="lead">您还没有任何申请单！</p>
+<% else %>
+
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>销售单号</th>
+      <th>商品</th>
+      <th>申请类型</th>
+      <th>申请时间</th>
+      <th>状态</th>
+      <th>操作</th>
+    </tr>
+    </thead>
+    <tbody id="search">
+
+      <%= render @applications,:locals => {:i=>0,:lay=>1} %>           
+    </tbody>
+  </table>
+
+<% end %>

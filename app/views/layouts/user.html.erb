@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>家电商场销售管理系统</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <%= csrf_meta_tags %>
+ 
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" type="text/css" href="/assets/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="/assets/bootstrap-responsive.css">
+  <link rel="stylesheet" type="text/css" href="/assets/bootmetro.css">
+  <link rel="stylesheet" type="text/css" href="/assets/bootmetro-tiles.css">
+  <link rel="stylesheet" type="text/css" href="/assets/bootmetro-charms.css">
+  <link rel="stylesheet" type="text/css" href="/assets/metro-ui-light.css">
+  <link rel="stylesheet" type="text/css" href="/assets/icomoon.css">
+
+  <!--  these two css are to use only for documentation -->
+  <link rel="stylesheet" type="text/css" href="/assets/demo.css">
+  <link rel="stylesheet" type="text/css" href="/assets/google-code-prettify/prettify.css" >
+
+
+  <!-- All JavaScript at the bottom, except for Modernizr and Respond.
+Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="/assets/modernizr-2.6.1.min.js"></script>
+  <script type="text/javascript" src="/assets/application.js"></script>
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">家电商场销售管理系统</a>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li class="active"><a href="#">首页</a></li>
+        </ul>
+        <form class="navbar-form pull-right">
+          <input class="span2" type="text" placeholder="Email">
+          <input class="span2" type="password" placeholder="Password">
+
+          <button type="submit" class="btn">登录</button>
+
+        </form>
+        <a href="/sessions/new" class="btn btn-danger">管理员登录</a>
+
+
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div><br>
+
+<div class="container">
+
+  <div class="row">
+    <div class="span3 bs-docs-sidebar">
+      <ul class="nav nav-list bs-docs-sidenav">
+        <li><a href="#global"><i class="icon-chevron-right"></i> 基本信息</a></li>
+        <li><a href="#gridSystem"><i class="icon-chevron-right"></i>订单</a></li>
+        <li><a href="#fluidGridSystem"><i class="icon-chevron-right"></i> 我的商品</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            申请
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#global"><i class="icon-chevron-right"></i> 维修/保修申请</a></li>
+            <li><a href="#gridSystem"><i class="icon-chevron-right"></i>退货申请</a></li>
+            <li><a href="#fluidGridSystem"><i class="icon-chevron-right"></i>申请清单</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+
+
+    <div class="span9">
+      <%= yield %>
+    </div><!--end span9-->
+  </div><!--end row-->
+
+
+  <footer align="center">
+    <p>&copy; Company 2012</p>
+  </footer>
+
+</div>
+
+<script type="text/javascript" src="/assets/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="/assets/google-code-prettify/prettify.js"></script>
+<script type="text/javascript" src="/assets/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="/assets/jquery.scrollTo.js"></script>
+<script type="text/javascript" src="/assets/bootstrap.min.js"></script>
+<script type="text/javascript" src="/assets/bootmetro.js"></script>
+<script type="text/javascript" src="/assets/bootmetro-charms.js"></script>
+<script type="text/javascript" src="/assets/demo.js"></script>
+<script type="text/javascript" src="/assets/holder.js"></script>
+<script type="text/javascript">
+    $(".metro").metro();
+</script>
+</body>
+</html>

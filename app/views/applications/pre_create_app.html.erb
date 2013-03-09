@@ -1,0 +1,64 @@
+<%= form_for(@application) do |f| %>
+  <%= render "share/error_message", :target => @application %>
+   <table class="table table-bordered">
+    <%= hidden_field_tag(:sell_id, @sell.id) %>
+    <tr>
+        <td>销售单编号</td>
+        <td>
+            <span class="input-xlarge uneditable-input"><%= @sell.id %></span>
+        </td>
+    </tr>
+    <tr>
+      <td>
+        商品
+      </td>
+      <td>
+        <div class="thumbnail">
+          <%=image_tag(img_url(@sell.product.img_url)) %>
+          <div class="caption">
+            <h4><%= @sell.product.name %></h4>
+          </div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+        <td>
+          申请理由
+        </td>
+        <td>
+          <%= f.text_area :remark,:rows=>5%>
+        </td>
+    </tr>
+              
+    <tr>
+        <td>
+                   申请类型
+        </td>
+        <td>
+            <label class="radio">
+              <%= f.radio_button(:app_type,"1") %>
+              <span class="metro-radio">维修</span>
+            </label>
+            <label class="radio">
+               <%= f.radio_button(:app_type,"2") %>
+               <span class="metro-radio">保修</span>
+            </label>
+
+            <label class="radio">
+               <%= f.radio_button(:app_type,"3") %>
+               <span class="metro-radio">退货</span>
+            </label>
+
+        </td>
+    </tr>
+              
+    <tr >
+        <td colspan="2"  align="center">
+          <%= f.submit "申请",:class=>"btn  btn-primary"  %>
+        </td>
+                
+    </tr>
+              
+  </table>
+<% end %>

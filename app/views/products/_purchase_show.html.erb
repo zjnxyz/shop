@@ -1,0 +1,42 @@
+<div class="form-horizontal">
+  <form action="/products/after_purchase" method="post" data-remote="true">
+  <input value="<%= target.id %>" name="p_id" type="hidden">
+  <div class="control-group">
+    <label class="control-label" for="number">商品编号</label>
+    <div class="controls">
+      <span class="input-xlarge uneditable-input"><%= target.number %></span>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="name">商品</label>
+    <div class="controls">
+      <span class="input-xlarge uneditable-input"><%= target.name %></span>      
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="inputEmail">进货单价</label>
+    <div class="controls">
+        <span class="add-on">￥</span>
+        <input class="span2" name="p_price" type="text" value="<%= target.purchase_price %>">
+        <span class="add-on">.00</span>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="inputEmail">进货数量</label>
+    <div class="controls">
+        <input type="text" name="p_num"  placeholder="10">
+    </div>
+  </div>
+
+
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn btn-primary">进货</button>
+          </div>
+        </div>
+  </form>
+
+</div>

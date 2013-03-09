@@ -1,0 +1,7 @@
+<% if @product.errors.empty? %>
+   $("#check").html('<p>盘点成功<button type="button" class="close" data-dismiss="modal" aria-hidden="true">单击此处关闭窗口</button></p>')
+   $("#search").html("<%=j render @products,:locals => {:i=>0,:lay=>3} %>")
+   $("#page").html("<%=j paginate @products %>")
+<% else %>
+   $("#check").html('<%=j render "share/error_message", :target => @staff %>')
+<% end %>

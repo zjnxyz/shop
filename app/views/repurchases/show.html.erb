@@ -1,0 +1,113 @@
+<div class="page-header">
+  <h3>退货单</h3>
+</div> 
+<%= render "share/error_message", :target => @repurchase %>
+
+<div class="form-horizontal">
+  <%= form_for(@repurchase, :url =>{:action=>"handle_resell"}, :html => { :method => "post" }) do |f| %>
+      <%= hidden_field_tag(:s_id, @sell.id) %>
+      <%= hidden_field_tag(:u_id, @sell.user.id) %>
+      <div class="control-group">
+                 <label class="control-label" for="inputEmail">商品编号</label>
+                 <div class="controls">
+                   <span class="input-xlarge uneditable-input"><%= @sell.product.number %></span>
+                 </div>
+                </div>
+                
+                <div class="control-group">
+                 <label class="control-label" for="inputEmail">商品</label>
+                 <div class="controls">
+                   <div class="thumbnail">
+                     <%=image_tag(img_url(@sell.product.img_url)) %>
+                     <div class="caption">
+                       <h4><%= @sell.product.name %></h4>
+                     </div>
+                   </div>
+                 </div>
+                </div>
+
+                 <div class="control-group">
+                 <label class="control-label" for="inputEmail">会员编号</label>
+                 <div class="controls">
+                   <span class="input-xlarge uneditable-input"><%= @sell.user.number %></span>
+                 </div>
+                </div>
+                
+                 <div class="control-group">
+                 <label class="control-label" for="inputEmail">会员姓名</label>
+                 <div class="controls">
+                   <span class="input-xlarge uneditable-input"><%= @sell.user.name %></span>
+                 </div>
+                </div>
+                
+                 <div class="control-group">
+                 <label class="control-label" for="inputEmail">会员类型</label>
+                 <div class="controls">
+                   <span class="input-xlarge uneditable-input"><%= @sell.user.member.name%></span>
+                 </div>
+                </div>
+                
+                 <div class="control-group">
+                 <label class="control-label" for="inputEmail">购买价格</label>
+                 <div class="controls">
+                  <%=f.text_field :sum,:class=>"input-xlarge uneditable-input",:value=>@sell.actual_sum %>
+                   
+                  </div>
+                 </div>
+
+                 <div class="control-group">
+                 <label class="control-label" for="inputEmail">退货数量</label>
+                 <div class="controls">
+                  <%= f.number_field :amount,:min=>1,:max=>" #{@sell.amount} ",:value=>1,:class=>"input-xlarge"%>
+                   
+                  </div>
+                 </div>
+   
+                
+                <div class="control-group">
+                 <label class="control-label" for="inputEmail">退货金额</label>
+                 <div class="controls">
+                  <div class="input-prepend input-append">
+                     <span class="add-on">￥</span>
+                     <%= f.text_field :actual_sum,:class=>"span2" %>
+                    <span class="add-on">.00</span>
+                 </div>
+                 </div>
+                </div>
+
+                <div class="control-group">
+                 <label class="control-label" for="inputEmail">是否加入库存</label>
+                 <div class="controls">
+                  <label class="radio">
+                    <input type="radio" name="joinP" id="j1"  value="t">
+                    <span class="metro-radio">是</span>
+                    
+                  </label>
+                   <label class="radio">
+                    <input type="radio" name="joinP" id="j1"  value="f">
+                    <span class="metro-radio">否</span>
+                    
+                  </label>
+                </div>
+                </div>
+
+                <div class="control-group">
+                 <label class="control-label" for="inputEmail">备注</label>
+                 <div class="controls">
+                  <%= f.text_area :remark, :rows=>5%>
+                 </div>
+                </div>
+ 
+               <div class="control-group">
+                <div class="controls">
+                 <button type="submit" class="btn btn-primary">确认退货</button>
+                </div>
+              </div>
+  <% end %>
+  <%= form_tag(:controller =>"sells",:action =>"check_sell") do%>
+           
+             
+  <% end %>
+
+</div>
+

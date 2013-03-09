@@ -1,0 +1,17 @@
+<%= render "sells/product", :target =>target.product %>
+<%= render "sells/user", :target =>target.user %>
+<td><%= format_date(target.created_at) %></td>
+<td><%= target.real_discount%></td>
+<td><%= target.use_integral%></td>
+<td>￥<%= target.sum%></td>
+<td>￥<%= target.actual_sum%></td>
+<td><%= format_resell target.status %></td>
+<td align="center"> 
+  <br>  
+  <% if target.status %>
+   <span class="badge badge-important">关闭</span>
+  <% else %>
+    <a href="/repurchases/<%=target.id %>"><button class="btn btn-danger" type="button"><i class=" icon-leaf"></i>退货</button></a>
+  <% end %>             
+  
+</td>

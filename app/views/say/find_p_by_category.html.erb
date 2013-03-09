@@ -1,0 +1,33 @@
+<div class="page-header">
+    <h3><%= @category.name %></h3>
+</div>
+
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs">
+  	<% i=0 %>
+  	<% @products_group.each do |brand,products| %>
+  	    <% if i==0 %>
+  	        <li class="active"><a href="#<%= brand.id %>" data-toggle="tab">
+  	        	<%= brand.name %>
+  	        </a></li>
+  	    <% else %>
+  	        <li><a href="#<%= brand.id %>" data-toggle="tab">
+  	        	<%= brand.name %>
+  	        </a></li>
+  	    <% end %>
+	    <% i+=1 %>
+    <% end %>
+  </ul>
+  <div class="tab-content" id="p_group" >
+    <%= render "say/products2",:target=>@products_group %>
+  </div>
+</div>
+
+<div id="myOrder" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">提示</h3>
+  </div>
+  <div id="content" class="modal-body" style="color:red">
+  </div>
+</div>

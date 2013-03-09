@@ -1,0 +1,19 @@
+ <td><%= target.number %></td>
+ <td>
+    <a class="tile wide imagetext wideimage" href="/products/<%= target.id %>">
+      <%= image_tag img_url(target.img_url), :class=>"img-rounded"%>
+      <div class="textover-wrapper">
+        <div class="text2"><%= target.name %></div>
+      </div>
+    </a>
+  </td>
+  <td><%= target.brand.name %></td>
+  <td><%= target.category.name %></td>
+  <td><%= target.stock_quantity %></td>
+  <td><%= target.sell_price %></td>
+    <td align="center">
+      <br>         
+      <%= link_to pre_add_sell_product_path(target),:class=>"btn btn-success" do%>
+       <i class=" icon-inbox"></i>购买
+      <%end%>
+  </td>

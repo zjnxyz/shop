@@ -1,0 +1,5 @@
+<% if @staff.errors.empty? %>
+   $("#notice_message").html('<%=j render "share/notice_message", :target => "密码重置成功，初始密码为：123456" %>')
+<% else %>
+   $("#notice_message").html('<%=j render "share/error_message", :target => @staff %>')
+<% end %>

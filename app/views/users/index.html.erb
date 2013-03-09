@@ -1,0 +1,42 @@
+<div class="page-header">
+    <h1>会员清单</h1>
+</div>
+<div>
+  <%= form_for @search, :remote => true,:url => users_url, :html => {:method => :get} do |f| %>
+      员工编号：<%= f.search_field :number_gt,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+      真实姓名：<%= f.search_field :name_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+      用户名：<%= f.search_field :username_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+      <%= f.submit "查找",:class =>"btn" %>
+  <% end %>   
+</div>
+<div id="notice_message">
+</div>
+           
+            <div>
+               <table class="table table-bordered">
+                 <thead>
+                   <tr>
+                     <th>会员编号</th>
+                     <th>用户名</th>
+                     <th>真实姓名</th>
+                     <th>电话</th>
+                     <th>邮箱</th>
+                     <th>会员类型</th>
+                     <th>积分</th>
+                     <th>操作</th>
+                   </tr>
+                 </thead>
+                 <tbody id="search">
+                    <%= render @users,:locals => {:i=>0} %> 
+                 </tbody>
+               </table>
+
+    <div id="page" class="pagination">
+      <%= paginate @users %>
+    </div>
+ </div>
+ 
+
+
+
+

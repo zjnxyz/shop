@@ -1,0 +1,28 @@
+  <div class="span3 bs-docs-sidebar">
+          <ul class="nav nav-list bs-docs-sidenav">
+            <li><a href="/users/<%= session[:user_id]%>"><i class="icon-chevron-right"></i> 基本信息</a></li>
+            <li><a href="/orders"><i class="icon-chevron-right"></i>订单</a></li>
+            <li><a href="/sells/sell_user"><i class="icon-chevron-right"></i> 我的商品</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                申请
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="/applications/index_user"><i class="icon-chevron-right"></i>申请清单</a></li>
+                <li>
+                  <%= link_to new_application_path do %>
+                    <i class="icon-chevron-right"></i> 添加申请
+                  <% end %>
+                </li>
+                
+              </ul>
+            </li>
+            <%=render "share/li_menu" %>
+        
+          </ul>
+
+        </div>
+        <div class="span9">
+          <%= yield %>
+        </div>
