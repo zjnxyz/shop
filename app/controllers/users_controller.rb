@@ -136,4 +136,27 @@ class UsersController < ApplicationController
     s
   end
 
+  def pre_update_password
+    @user=User.find(session[:user_id])
+  end
+
+  def update_password
+    @u=User.new(params[:user])
+    @u_id=params[:u_id].to_i
+    @oldpassword=params[:oldpassword]
+
+    respond_to do |format|
+      @user=User.find(@u_id)
+      if User.encrypt_password(@oldpassword, @user.salt) ==@user.hash_password
+        @user.update_attributes(:password=>@u.password)
+        format.html { redirect_to @user, notice: '密码修改成功.' }
+        format.json { head :no_content }
+      else
+         format.html { render action: "pre_update_password" }
+         format.json { render json: @user.errors, status: :unprocessable_entity } 
+      end
+    end
+
+  end
+
 end

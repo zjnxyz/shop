@@ -42,6 +42,8 @@ Shop::Application.routes.draw do
 
   controller :users do
     post 'users/query_by_number'=>:query_by_number
+    get'users/update_password'=>:pre_update_password
+    post'users/update_password'=>:update_password
   end
 
   controller :sells do
