@@ -1,7 +1,7 @@
 
 
 <div class="page-header">
-  <h1>基本信息</h1>
+  <h3>基本信息</h3>
 </div>
 <%= render "share/notice_message", :target => notice %>
 <table class="table table-bordered">
@@ -76,7 +76,10 @@
               
               <tr >
                 <td colspan="2"  align="center">
-                  <%= link_to '修改', edit_user_path(@user),:class =>"btn btn-primary" %> 
+                  <%= link_to '修改信息', edit_user_path(@user),:class =>"btn btn-primary" %>
+                  <% if @user.id==session[:user_id] %>
+                   |<a href="/users/update_password" class="btn btn-success" >修改密码</a>
+                  <% end %>
                 </td>
                 
               </tr>

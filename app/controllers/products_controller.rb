@@ -73,9 +73,10 @@ class ProductsController < ApplicationController
   # PUT /products/1.json
   def update
     @product = Product.find(params[:id])
-
+    
     respond_to do |format|
       if @product.update_attributes(params[:product])
+        @product.update_attributes(:unit=>Unit.find(params[:unit_id].to_i),:brand=>Brand.find(params[:brand_id].to_i),:category=>Category.find(params[:category_id].to_i))
         format.html { redirect_to @product, notice: '商品更新成功.' }
         format.json { head :no_content }
       else

@@ -10,26 +10,32 @@
     <% end %>
 </div>
 
-<table class="table table-bordered">
-    <thead>
-    <tr>
-      <th>商品编号</th>
-      <th>商品</th>
-      <th>品牌</th>
-      <th>产品</th>
-      <th>库存下线</th>
-      <th>库存数量</th>
-      <th>操作</th>
-    </tr>
-    </thead>
-    <tbody id="search">
-      <%= render @products,:locals => {:i=>0,:lay=>4} %>           
-    </tbody>
-  </table>
-  <div id="page" class="pagination">
-      <%= paginate @products %>
-  </div>
+<% if @products.blank?%>
+     <blockquote>
+       <p>还没有数据，赶紧去添加吧.</p>
+     </blockquote>
+<% else %>
 
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>商品编号</th>
+          <th>商品</th>
+          <th>品牌</th>
+          <th>产品</th>
+          <th>库存下线</th>
+          <th>库存数量</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody id="search">
+          <%= render @products,:locals => {:i=>0,:lay=>4} %>           
+        </tbody>
+      </table>
+      <div id="page" class="pagination">
+          <%= paginate @products %>
+      </div>
+  <% end %>
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

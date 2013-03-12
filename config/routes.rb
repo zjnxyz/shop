@@ -1,6 +1,8 @@
 Shop::Application.routes.draw do
 
 
+  get "apple/index"
+
   get "welcome/index"
 
   get "admin/index"
@@ -18,7 +20,7 @@ Shop::Application.routes.draw do
   get'sessions/new_user'
   post'sessions/create_user'
   get'sessions/destroy_user'
-
+  get "applications/see_staff"
 
   #devise_for :users
 
@@ -50,6 +52,7 @@ Shop::Application.routes.draw do
     post 'sells/check_sell'=>:check_sell
     get'sells/sell_user'=>:sell_user_index
     get'sells/total_staff_sell'=>:total_staff_sell
+    get'sells/total_staff_all_sell'=>:total_staff_all_sell
   end
 
   resources :say do
@@ -63,7 +66,6 @@ Shop::Application.routes.draw do
 
   controller :applications do
     get "applications/index_user"=>:index_user
-    get "applications/see_staff"=>:see_staff
   end
 
  resources :applications do
@@ -90,6 +92,11 @@ Shop::Application.routes.draw do
     get :purchase, :on=> :member
     get :pre_add_sell,:on=>:member
 
+  end
+
+  controller :staffs do
+     get 'staffs/update_password'=>:pre_update_password
+     post 'staffs/update_password'=>:update_password
   end
 
   resources :staffs,:users do

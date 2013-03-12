@@ -136,9 +136,22 @@ class SellsController < ApplicationController
   end
 
   #业务员得到自己某一段时间内的销售量
+  #排除取消订单的
   def total_staff_sell
     @search=Sell.search(params[:search])
     @sells = @search.where("staff_id = ? and status = ?",session[:staff_id],false).order("created_at desc").page(params[:page]).per(5) 
+    respond_to do |format|
+      format.html # index.html.erb
+      format.js{ render :layout => false }
+      format.json { render json: @sells }
+    end
+  end
+
+  #管理员查看所有人的销售业绩，
+  #排除取消订单的
+  def total_staff_all_sell
+    @search=Sell.search(params[:search])
+    @sells=@search.where("status = ?",false).order("created_at desc").page(params[:page]).per(5) 
     respond_to do |format|
       format.html # index.html.erb
       format.js{ render :layout => false }

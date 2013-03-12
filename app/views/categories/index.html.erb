@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>产品清单</h1>
+  <h3>产品清单</h3>
 
 </div>
 <%= render "share/notice_message", :target => notice %>
@@ -11,18 +11,25 @@
     <% end %>
 
   </div>
-  <table class="table table-bordered">
-    <thead>
-    <tr>
-      <th>编号</th>
-      <th>产品名</th>
-      <th>创建日期</th>
-      <th>操作</th>
-    </tr>
-    </thead>
-    <tbody>
-      <%= render @categories,:locals => {:i=>0} %>
-    </tbody>
-  </table>
+    <% if @categories.blank?%>
+     <blockquote>
+       <p>还没有数据，赶紧去添加吧.</p>
+     </blockquote>
+    <% else %>
+
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>编号</th>
+          <th>产品名</th>
+          <th>创建日期</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+          <%= render @categories,:locals => {:i=>0} %>
+        </tbody>
+      </table>
+ <% end %>
 </div>
 

@@ -2,7 +2,7 @@
   <h3>增加销售单</h3>
 </div>  
 <div class="form-horizontal" >
-  <%= form_tag(:controller =>"sells",:action =>"create") do %>
+  <%= form_tag({:controller =>"sells",:action =>"create"},:id=>"form_validator") do %>
             <%= hidden_field_tag(:p_id, @product.id) %>
 
               <div class="control-group">
@@ -35,7 +35,7 @@
                  <div class="control-group">
                  <label class="control-label" for="inputEmail">会员编号</label>
                  <div class="controls">
-                   <input name="user_id" id="uid" class="span3">
+                   <input name="user_id" id="uid" class="span3 validate[required,custom[number]]">
                    <span id="getUser" class="btn btn-success">查询</span>
                  </div>
                 </div>
@@ -47,7 +47,7 @@
                  <div class="controls">
                     <div class="input-prepend input-append">
                      <span class="add-on">￥</span>
-                     <input class="span2" name="sell_price" type="text" value="<%=@product.sell_price %>">
+                     <input class="span2 validate[required,custom[number]]" name="sell_price"  type="text" value="<%=@product.sell_price %>">
                     <span class="add-on">.00</span>
                   </div>
                  </div>
@@ -56,7 +56,7 @@
                 <div class="control-group">
                  <label class="control-label" for="inputEmail">店面折扣</label>
                  <div class="controls">
-                 	<input name="real_discount" class="span3" value="<%= @product.discount%>">
+                 	<input name="real_discount" class="span3 validate[required,custom[number]]" value="<%= @product.discount%>">
                  </div>
                 </div>
                 

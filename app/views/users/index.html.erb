@@ -11,30 +11,37 @@
 </div>
 <div id="notice_message">
 </div>
+  <% if @users.blank?%>
+     <blockquote>
+       <p>还没有数据，赶紧去添加吧.</p>
+     </blockquote>
+    <% else %>
            
-            <div>
-               <table class="table table-bordered">
-                 <thead>
-                   <tr>
-                     <th>会员编号</th>
-                     <th>用户名</th>
-                     <th>真实姓名</th>
-                     <th>电话</th>
-                     <th>邮箱</th>
-                     <th>会员类型</th>
-                     <th>积分</th>
-                     <th>操作</th>
-                   </tr>
-                 </thead>
-                 <tbody id="search">
-                    <%= render @users,:locals => {:i=>0} %> 
-                 </tbody>
-               </table>
+                <div>
+                   <table class="table table-bordered">
+                     <thead>
+                       <tr>
+                         <th>会员编号</th>
+                         <th>用户名</th>
+                         <th>真实姓名</th>
+                         <th>电话</th>
+                         <th>邮箱</th>
+                         <th>会员类型</th>
+                         <th>积分</th>
+                         <th>操作</th>
+                       </tr>
+                     </thead>
+                     <tbody id="search">
+                        <%= render @users,:locals => {:i=>0} %> 
+                     </tbody>
+                   </table>
 
-    <div id="page" class="pagination">
-      <%= paginate @users %>
-    </div>
- </div>
+        <div id="page" class="pagination">
+          <%= paginate @users %>
+        </div>
+      </div>
+ 
+  <% end %>
  
 
 

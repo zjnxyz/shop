@@ -10,7 +10,11 @@
 </td>
 <td><%= target.user.name %></td>
 <td>￥<%= target.product.sell_price%></td>
-<td>￥<%= target.actual_sum%></td>
+<td>￥<%= target.actual_sum.round(2)%></td>
 <td>￥<%= target.product.percentage_price%></td>
 <td><%= target.product.over_royalty_percentage%></td>
-<td><%= count_percen target.product.percentage_price,target.actual_sum, target.product.over_royalty_percentage,target.amount %></td>
+<td><%= (count_percen target.product.percentage_price,target.actual_sum, target.product.over_royalty_percentage,target.amount).round(2) %></td>
+<% if Staff.find(session[:staff_id]).staff_type == 1 %> 
+ <td> <%= target.staff.number %> </td>
+ <td> <%= target.staff.name %> </td>
+<% end %>

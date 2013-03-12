@@ -69,9 +69,14 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
-
+    @member_id=params[:member_id]
+  
     respond_to do |format|
       if @user.update_attributes(params[:user])
+        if !@member_id.blank?
+          @member=Member.find(@member_id.to_i)
+          @user.update_attributes(:member=>@member)   
+        end
         format.html { redirect_to @user, notice: '会员修改成功.' }
         format.json { head :no_content }
       else
@@ -86,9 +91,8 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-
     respond_to do |format|
-      format.html { redirect_to users_url }
+      format.html { redirect_to "/welceom/index" }
       format.json { head :no_content }
     end
   end
@@ -148,11 +152,18 @@ class UsersController < ApplicationController
     respond_to do |format|
       @user=User.find(@u_id)
       if User.encrypt_password(@oldpassword, @user.salt) ==@user.hash_password
-        @user.update_attributes(:password=>@u.password)
-        format.html { redirect_to @user, notice: '密码修改成功.' }
-        format.json { head :no_content }
+        if @u.password == @u.password_confirmation
+          @user.update_attributes(:password=>@u.password)
+          format.html { redirect_to @user, notice: '密码修改成功.' }
+          format.json { head :no_content }
+        else
+         flash[:notice]="新密码不一致，请重新输入！"
+         format.html { redirect_to action: "pre_update_password" }
+         format.json { render json: @user.errors, status: :unprocessable_entity }  
+        end
       else
-         format.html { render action: "pre_update_password" }
+         flash[:notice]="旧密码输入不正确，请重新输入！"
+         format.html { redirect_to action: "pre_update_password" }
          format.json { render json: @user.errors, status: :unprocessable_entity } 
       end
     end

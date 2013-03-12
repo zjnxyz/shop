@@ -1,5 +1,5 @@
   <div class="page-header">
-    <h1>员工清单</h1>
+    <h3>员工清单</h3>
   </div>
   <div>   
     <%= form_for @search, :remote => true,:url => staffs_url, :html => {:method => :get} do |f| %>
@@ -13,7 +13,11 @@
   <div id="notice_message">
 
   </div>
-
+  <% if @staffs.blank?%>
+     <blockquote>
+       <p>还没有数据，赶紧去添加吧.</p>
+     </blockquote>
+  <% else %>
            
     <div>
       <table class="table table-bordered">
@@ -34,6 +38,6 @@
     <div id="page" class="pagination">
       <%= paginate @staffs %>
     </div>
-    
+  <% end %>  
 
  </div>

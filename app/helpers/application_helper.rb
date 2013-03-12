@@ -25,4 +25,9 @@ module ApplicationHelper
     end 
   end
 
+  def to_money(money)
+    s=money.round(2)
+    
+  end
+
 end

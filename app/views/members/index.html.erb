@@ -10,36 +10,42 @@
     <%= link_to '添加', new_member_path, :class=>"btn btn-success btn-large " %>
 
   </div>
-  <table class="table table-bordered">
-    <thead>
-    <tr>
-      <th>类型编码</th>
-      <th>类型名</th>
-      <th>会员折扣</th>
-      <th>积分转换率</th>
-      <th>创建日期</th>
-      <th>操作</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% i=0 %>
-    <% @members.each do |member| %>
-      <% if i%3== 1 %>
-          <tr class="success">
-           <%= render "members/member_one", :target =>member %>  
-          </tr>
-      <% elsif i%3==2 %>
-            <tr class="warning">
-             <%= render "members/member_one", :target =>member %> 
+   <% if @members.blank?%>
+     <blockquote>
+      <p>还没有数据，赶紧去添加吧.</p>
+    </blockquote>
+  <% else %>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>类型编码</th>
+        <th>类型名</th>
+        <th>会员折扣</th>
+        <th>积分转换率</th>
+        <th>创建日期</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% i=0 %>
+      <% @members.each do |member| %>
+        <% if i%3== 1 %>
+            <tr class="success">
+             <%= render "members/member_one", :target =>member %>  
             </tr>
-      <% else %>
-            <tr class="error">
-             <%= render "members/member_one", :target =>member %> 
-            </tr>
+        <% elsif i%3==2 %>
+              <tr class="warning">
+               <%= render "members/member_one", :target =>member %> 
+              </tr>
+        <% else %>
+              <tr class="error">
+               <%= render "members/member_one", :target =>member %> 
+              </tr>
+        <% end %>
+          <% i+=1 %>
       <% end %>
-        <% i+=1 %>
-    <% end %>
 
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  <% end %>
 </div>

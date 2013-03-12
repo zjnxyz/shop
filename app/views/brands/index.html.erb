@@ -11,19 +11,28 @@
      <i class="icon-plus"></i>添加
     <% end %>
   </div>
-  <table class="table table-bordered">
-    <thead>
-    <tr>
-      <th>品牌编码</th>
-      <th>品牌名</th>
-      <th>创建日期</th>
-      <th>操作</th>
-    </tr>
-    </thead>
-    <tbody>
-      <%= render @brands,:locals => {:i=>0} %>
-    </tbody>
-  </table>
+  <% if @brands.blank?%>
+     <blockquote>
+      <p>还没有数据，赶紧去添加吧.</p>
+    </blockquote>
+  <% else %>
+
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>品牌编码</th>
+          <th>品牌名</th>
+          <th>创建日期</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+          <%= render @brands,:locals => {:i=>0} %>
+        </tbody>
+      </table>
+
+  <% end %>
+  
 </div>
 
 

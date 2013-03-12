@@ -1,6 +1,7 @@
 # coding: utf-8
 class SessionsController < ApplicationController
   #layout "welcome"
+  skip_before_filter :require_login
   def new
   end
 
@@ -25,7 +26,7 @@ class SessionsController < ApplicationController
   def create_user
     if user=User.authenticate(params[:number],params[:password])
      session[:user_id]=user.id
-      redirect_to "/admin/index"
+     redirect_to "/admin/index"
     else
       redirect_to "/sessions/new_user", :notice => '用户名或密码错误'
     end

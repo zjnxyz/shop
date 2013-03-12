@@ -1,10 +1,11 @@
 <%= render "sells/product", :target =>target.product %>
 <%= render "sells/user", :target =>target.user %>
 <td><%= format_date(target.created_at) %></td>
-<td><%= target.real_discount%></td>
+<td><%= target.real_discount.round(2) %></td>
 <td><%= target.use_integral%></td>
 <td>￥<%= target.sum%></td>
-<td>￥<%= target.actual_sum%></td>
+ <td><%= target.amount %></td>
+<td>￥<%= target.actual_sum.round(2) %></td>
 <td><%= format_resell target.status %></td>
 <td align="center"> 
   <br>  

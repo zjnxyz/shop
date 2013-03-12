@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>单位清单</h1>
+  <h3>单位清单</h3>
 
 </div>
 
@@ -13,19 +13,26 @@
     <% end %>
 
   </div>
-  <table class="table table-bordered">
-    <thead>
-    <tr>
-      <th>单位编码</th>
-      <th>产品名</th>
-      <th>创建日期</th>
-      <th>操作</th>
-    </tr>
-    </thead>
-    <tbody>
-      <%= render @units,:locals => {:i=>0} %>
-    </tbody>
-  </table>
+  <% if @units.blank?%>
+     <blockquote>
+       <p>还没有数据，赶紧去添加吧.</p>
+     </blockquote>
+  <% else %>
+
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>单位编码</th>
+        <th>产品名</th>
+        <th>创建日期</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+        <%= render @units,:locals => {:i=>0} %>
+      </tbody>
+    </table>
+  <% end %>
 </div>
 
 

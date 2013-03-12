@@ -13,12 +13,12 @@ class ApplicationsController < ApplicationController
   end
 
   def see_staff
-    #@search=Application.search(params[:search])
-    @applications =Application.all #Application.where("is_handle = ?",false).page(params[:page]).per(5)
-    # respond_to do |format|
-    #   format.html # index.html.erb
-    #   format.json { render json: @applications }
-    # end
+    @search=Application.search(params[:search])
+    @applications =Application.where("is_handle = ?",false).page(params[:page]).per(5)
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @applications }
+    end
   end
 
   # GET /applications/1

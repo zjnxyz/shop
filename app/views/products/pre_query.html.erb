@@ -9,27 +9,31 @@
       产品：<%= f.search_field :category_name_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %>
       <%= f.submit "查找",:class =>"btn btn-info" %>
     <% end %>
-
-  <table class="table table-bordered">
-    <thead>
-    <tr>
-      <th>商品编号</th>
-      <th>商品</th>
-      <th>品牌</th>
-      <th>产品</th>
-      <th>库存数量</th>
-      <th>预售价</th>
-      <th>操作</th>
-    </tr>
-    </thead>
-    <tbody id="search">
-      <%= render @products,:locals => {:i=>0,:lay=>2} %>           
-    </tbody>
-  </table>
-  <div id="page" class="pagination">
-      <%= paginate @products %>
+  <% if @products.blank?%>
+     <blockquote>
+       <p>还没有数据，赶紧去添加吧.</p>
+     </blockquote>
+  <% else %>
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>商品编号</th>
+          <th>商品</th>
+          <th>品牌</th>
+          <th>产品</th>
+          <th>库存数量</th>
+          <th>预售价</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody id="search">
+          <%= render @products,:locals => {:i=>0,:lay=>2} %>           
+        </tbody>
+      </table>
+      <div id="page" class="pagination">
+          <%= paginate @products %>
   </div>
  
-    
+  <% end %> 
   </div>
           

@@ -2,7 +2,7 @@
 class ApplicationController < ActionController::Base
   # layout :detemine_layout
   protect_from_forgery
-
+  before_filter :require_login
   # def detemine_layout
   #   if session[:staff_id] == nil && session[:user] == nil
   #     "welcome"
@@ -27,5 +27,22 @@ class ApplicationController < ActionController::Base
 
     @_current_user ||= session[:staff_id] &&
         Staff.find_by_id(session[:staff_id])  unless session[:staff_id] == nil
+  end
+
+  def require_login
+
+    if !login_in
+      flash[:error] = "对不起，您还没有登录无权访问该页面"
+      redirect_to "/welcome/index"
+    end
+    
+  end
+
+  def login_in
+    if !session[:user_id].blank? || !session[:staff_id].blank?
+       true
+    else
+      false
+    end
   end
 end

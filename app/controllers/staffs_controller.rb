@@ -131,5 +131,36 @@ class StaffsController < ApplicationController
     s
   end
 
+  def pre_update_password
+
+    @staff=Staff.find(session[:staff_id])
+    
+  end
+  
+   def update_password
+    @s=Staff.new(params[:staff])
+    @s_id=params[:s_id].to_i
+    @oldpassword=params[:oldpassword]
+
+    respond_to do |format|
+      @staff=Staff.find(@s_id)
+      if Staff.encrypt_password(@oldpassword, @staff.salt) ==@staff.hash_password
+        if @s.password == @s.password_confirmation
+          @staff.update_attributes(:password=>@s.password)
+          format.html { redirect_to @staff, notice: '密码修改成功.' }
+          format.json { head :no_content }
+        else
+         flash[:notice]="新密码不一致，请重新输入！"
+         format.html { redirect_to action: "pre_update_password" }
+         format.json { render json: @staff.errors, status: :unprocessable_entity }  
+        end
+      else
+         flash[:notice]="旧密码输入不正确，请重新输入！"
+         format.html { redirect_to action: "pre_update_password" }
+         format.json { render json: @staff.errors, status: :unprocessable_entity } 
+      end
+    end
+
+  end
 
 end

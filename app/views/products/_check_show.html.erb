@@ -1,5 +1,5 @@
 <div class="form-horizontal">
-  <form action="/products/after_check" method="post" data-remote="true">
+  <form action="/products/after_check" method="post" id="form_validator" data-remote="true">
   <input value="<%= target.id %>" name="p_id" type="hidden">
   <div class="control-group">
     <label class="control-label" for="number">商品编号</label>
@@ -24,7 +24,7 @@
   <div class="control-group">
     <label class="control-label" for="number">库存数量</label>
     <div class="controls">
-      <input name="sum" class="span2" value="<%= target.stock_quantity%>">
+      <input name="sum" class="span2 validate[required,custom[integer]]" value="<%= target.stock_quantity%>">
     </div>
   </div>
 

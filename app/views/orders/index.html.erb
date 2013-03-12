@@ -14,32 +14,39 @@
   <% end %>
 </div>
 <div>
-<blockquote>
-  <p>系统会自动删除那些超过最后付款期限的预订单.</p>
-</blockquote>
- <table class="table table-bordered">
-    <thead>
-    <tr>
-      <th>商品编号</th>
-      <th>商品</th>
-      <th>预订价格</th>
-      <th>数量</th>
-      <th>预订时间</th>
-      <th>最迟付款时间</th>
+   <% if @orders.blank?%>
+     <blockquote>
+      <p>还没有数据，赶紧去添加吧.</p>
+    </blockquote>
+  <% else %>
+
+    <blockquote>
+      <p>系统会自动删除那些超过最后付款期限的预订单.</p>
+    </blockquote>
+     <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>商品编号</th>
+          <th>商品</th>
+          <th>预订价格</th>
+          <th>数量</th>
+          <th>预订时间</th>
+          <th>最迟付款时间</th>
+          <% if !session[:staff_id].blank? %>
+             <th>会员编号</th>
+             <th>会员姓名</th>
+          <% end %>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody id="search">
+          <%= render @orders,:locals => {:i=>0} %>           
+        </tbody>
+      </table>
       <% if !session[:staff_id].blank? %>
-         <th>会员编号</th>
-         <th>会员姓名</th>
+          <div id="page">
+             <%= paginate @orders %>
+          </div>
       <% end %>
-      <th>操作</th>
-    </tr>
-    </thead>
-    <tbody id="search">
-      <%= render @orders,:locals => {:i=>0} %>           
-    </tbody>
-  </table>
-  <% if !session[:staff_id].blank? %>
-      <div id="page">
-         <%= paginate @orders %>
-      </div>
   <% end %>
 </div>

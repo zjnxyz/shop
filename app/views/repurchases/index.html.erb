@@ -12,6 +12,11 @@
     </div>
  </div>
 <div>
+  <% if @repurchases.blank?%>
+     <blockquote>
+       <p>还没有数据，赶紧去添加吧.</p>
+     </blockquote>
+  <% else %>
 
                <table class="table table-bordered">
                  <thead>
@@ -35,5 +40,6 @@
                <div id="page" class="pagination">
                 <%= paginate @repurchases %>
                </div>
+  <% end %>
 </div>
 
