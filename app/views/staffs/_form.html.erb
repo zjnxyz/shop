@@ -1,4 +1,4 @@
-<%= form_for(@staff,:html=>{:id=>"form_validator"}) do |f| %>
+<%= form_for(@staff,:html=>{:id=>"form_validator",:multipart => true}) do |f| %>
   <%= render "share/error_message", :target => @staff %>
 
       
@@ -16,9 +16,11 @@
     <td width="120px">
       姓名
     </td>
+    <!--
     <td>
       <%= f.text_field :name, :class =>"span3 validate[required,minSize[2]]" %>
     </td>
+    -->
   </tr>
 
 
@@ -46,7 +48,8 @@
       头像
     </td>
     <td>
-      <%= f.text_field :img_url, :class =>"span3" %>
+      <%= f.file_field :img_url %>
+      <%= f.hidden_field :img_url_cache %>
     </td>
   </tr>
 

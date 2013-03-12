@@ -34,7 +34,7 @@ gem 'devise'
 #上传组件
 gem 'carrierwave'
 #gem 'carrierwave-upyun', '0.1.5'
-gem 'mini_magick','3.3', :require => false
+gem 'mini_magick','3.5'#, :require => false
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

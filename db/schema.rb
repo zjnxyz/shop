@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309083653) do
+ActiveRecord::Schema.define(:version => 20130312141424) do
 
   create_table "applications", :force => true do |t|
     t.integer  "sell_id"
@@ -162,6 +162,7 @@ ActiveRecord::Schema.define(:version => 20130309083653) do
     t.string   "hash_password"
     t.string   "salt"
     t.integer  "staff_type"
+    t.string   "pic"
   end
 
   create_table "units", :force => true do |t|

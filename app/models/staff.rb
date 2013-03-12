@@ -1,16 +1,17 @@
 # coding: utf-8
 class Staff < ActiveRecord::Base
-
+  #上传
+  mount_uploader :img_url, AvatarUploader
   #员工表
   has_many :repurchases,:dependent => :destroy
   has_many :sells,:dependent => :destroy
     #地址，补助，出生年月， 身份证，邮件，
     #头像， 最低工资， 姓名， 员工编号，电话
-    #拼音缩写，备注，性别，开始工作时间 ,员工类型（1-管理员，2-业务员）
+    #拼音缩写，备注，性别，开始工作时间 ,员工类型（1-管理员，2-业务员,头像
   attr_accessible :address, :allowance, :birthday, :card_id, :email,
                   :img_url, :low_salary, :name, :number, :phone,
                   :pinyin_initials, :remark, :sex, :start_work_time,:type,
-                  :hash_password,:salt,:password_confirmation,:password,:staff_type
+                  :hash_password,:salt,:password_confirmation,:password,:staff_type,:pic,:img_url_cache
   attr_reader :password
 
   validates  :email, :presence => true, :uniqueness =>true
@@ -20,7 +21,7 @@ class Staff < ActiveRecord::Base
   validates :allowance, :low_salary, :numericality => true
   validates :name,:presence => true,:length => { :minimum => 2 }
   validates :phone, :birthday, :card_id,:start_work_time,:presence => true
-
+ 
   #validate :password_must_be_present
 
   def Staff.authenticate(number,password)
