@@ -1,16 +1,16 @@
 # coding: utf-8
 class AvatarUploader < BaseUploader
   
-  version :thumb do
-    process :resize_to_fill => [50,50]
-    process :strip
-  end
+  # version :thumb do
+  #   process :resize_to_fill => [50,50]
+  #   process :strip
+  # end
   version :thumb_medium do
     process :resize_to_fill => [100,100]
     process :strip
   end
   version :thumb_large do
-    process :resize_to_limit => [300,300]
+    process :resize_to_limit => [800,500]
     process :strip
   end
   # version :scaled_full do

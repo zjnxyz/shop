@@ -1,5 +1,5 @@
 <div class="form-horizontal">
-<%= form_for(@product,:html=>{:id=>"form_validator"}) do |f| %>
+<%= form_for(@product,:html=>{:id=>"form_validator",:multipart => true}) do |f| %>
 
       <%= render "share/error_message", :target => @product %>
 
@@ -19,7 +19,9 @@
       <div class="control-group">
         <%= f.label :img_url,"商品图片",:class=>"control-label" %>
         <div class="controls">
-          <%= f.text_field :img_url,:placeholder=>"商品图片" %>
+          <%= image_tag @product.img_url_url(:thumb_medium) if !@product.img_url.blank?%>
+          <%= f.file_field :img_url %>
+          <%= f.hidden_field :img_url_cache %>
         </div>
       </div>
 

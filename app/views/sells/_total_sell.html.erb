@@ -1,5 +1,6 @@
 <td><%= format_date(target.created_at) %></td>
 <td><%= target.id %></td>
+<!--
 <td>
     <a class="tile wide imagetext wideimage" href="#">
       <%= image_tag(img_url(target.product.img_url)) %>
@@ -8,6 +9,8 @@
       </div>
     </a>
 </td>
+-->
+<%= render "sells/product", :target =>target.product %>
 <td><%= target.user.name %></td>
 <td>￥<%= target.product.sell_price%></td>
 <td>￥<%= target.actual_sum.round(2)%></td>

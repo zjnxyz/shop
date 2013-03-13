@@ -1,5 +1,7 @@
 class Product < ActiveRecord::Base
   #商品表
+  #上传
+  mount_uploader :img_url, AvatarUploader
   belongs_to :unit
   belongs_to :category
   belongs_to :brand
@@ -15,7 +17,7 @@ class Product < ActiveRecord::Base
                   :name, :number, :over_royalty_percentage,
                   :percentage_price, :pinyin_initials, :purchase_price,
                   :sell_price, :status, :stock_lower_limit, :stock_quantity,
-                  :subsidies_proportion, :summary, :sales_volume,:big_imgurl,:discount
+                  :subsidies_proportion, :summary, :sales_volume,:big_imgurl,:discount,:img_url_cache
 
   validates :number,:name, :uniqueness =>true,:presence => true
   validates :over_royalty_percentage, :percentage_price,:sell_price,:purchase_price, :numericality => true,:presence => true

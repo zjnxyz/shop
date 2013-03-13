@@ -2,7 +2,7 @@
 <td>
   <%= link_to target do %>
     <div class="thumbnail">
-      <%= image_tag img_url(target.img_url) %>
+      <%= image_tag img_url(target.img_url_url(:thumb_medium)) %>
         <div class="caption">
             <h3><%= target.name %></h3>
         </div>

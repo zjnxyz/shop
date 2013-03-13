@@ -16,11 +16,9 @@
     <td width="120px">
       姓名
     </td>
-    <!--
     <td>
       <%= f.text_field :name, :class =>"span3 validate[required,minSize[2]]" %>
     </td>
-    -->
   </tr>
 
 
@@ -48,6 +46,7 @@
       头像
     </td>
     <td>
+      <%= image_tag @staff.img_url_url(:thumb_medium) if !@staff.img_url.blank?%>
       <%= f.file_field :img_url %>
       <%= f.hidden_field :img_url_cache %>
     </td>

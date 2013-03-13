@@ -1,8 +1,9 @@
 <td><%= target.id %></td>
+<!--
 <% if !target.product.blank? %>
   <td>
     <a class="tile wide imagetext wideimage" href="#">
-      <%= image_tag(img_url(target.product.img_url)) %>
+      <%= image_tag(img_url(target.product.img_url_url(:thumb_medium))) %>
       <div class="textover-wrapper">
         <div class="text2"><%=target.product.name %></div>
       </div>
@@ -11,7 +12,8 @@
 <% else %>
  <td>该商品已被删除</td>
 <% end %>
-
+-->
+<%= render "sells/product", :target =>target.product %>
 <td><%= target.actual_sum %></td>
 <td><%= target.amount %></td>
 <td><%= format_date(target.created_at) %></td>

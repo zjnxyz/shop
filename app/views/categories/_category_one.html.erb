@@ -1,7 +1,7 @@
  <td><%=target.id %></td>
  <td>
     <div class="thumbnail">
-      <%= image_tag(img_url(target.imgurl)) %>
+      <%= image_tag(img_url(target.imgurl_url(:thumb_medium))) %>
       <div class="caption">
         <h3><%= target.name %></h3>
       </div>

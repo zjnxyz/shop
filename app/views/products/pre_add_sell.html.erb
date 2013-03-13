@@ -16,7 +16,7 @@
                  <label class="control-label" for="inputEmail">商品名</label>
                  <div class="controls">
                    <div class="thumbnail">
-                     <%= image_tag(img_url(@product.img_url)) %>
+                     <%= image_tag(img_url(@product.img_url_url(:thumb_medium))) %>
                      <div class="caption">
                        <h3><%=@product.name %></h3>
                      </div>
