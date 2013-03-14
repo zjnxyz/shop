@@ -58,6 +58,10 @@ Shop::Application.routes.draw do
     get'sells/total_staff_all_sell'=>:total_staff_all_sell
   end
 
+  controller :say do
+    post "say/search"=>:search_product
+  end
+
   resources :say do
     get :find_p_by_brand, :on=>:member
     get :find_p_by_category, :on=>:member
