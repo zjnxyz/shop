@@ -26,24 +26,23 @@ class SayController < ApplicationController
 
   def search_product
     @type=params[:type].to_i #type=1表安品牌搜索，type=2：产品，type=3：商品
-    @prdoucts=Array.new
-
+    @products=Array.new
+    @param=params[:param]
+    @order=Order.new
+   
     if @type==1
-      @brands=Brand.where("name LIKE ?",'%#{params[:param]}%')
-
+      @brands=Brand.where("name LIKE ?","%"+@param+"%")
       @brands.each do |brand|
-        @prdoucts+=Product.where("brand_id = ?",brand.id)
+        @products=Product.where("brand_id = ?",brand.id)
       end
-
     elsif @type==2
-      @categories=Category.where("name LIKE ?",'%#{params[:param]}%')
-
+      @categories=Category.where("name LIKE ?","%"+@param+"%")
       @categories.each do |c|
-         @prdoucts+=Product.where("category_id = ?",c.id)
+         @products+=Product.where("category_id = ?",c.id)
       end
 
     elsif @type==3
-      @prdoucts=Product.where("name LIKE ?",'%#{params[:param]}%')
+      @products=Product.where("name LIKE ?","%"+@param+"%")
     end
 
   end 
