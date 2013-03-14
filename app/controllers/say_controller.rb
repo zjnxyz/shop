@@ -33,7 +33,7 @@ class SayController < ApplicationController
     if @type==1
       @brands=Brand.where("name LIKE ?","%"+@param+"%")
       @brands.each do |brand|
-        @products=Product.where("brand_id = ?",brand.id)
+        @products+=Product.where("brand_id = ?",brand.id)
       end
     elsif @type==2
       @categories=Category.where("name LIKE ?","%"+@param+"%")
