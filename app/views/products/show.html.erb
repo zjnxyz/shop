@@ -107,6 +107,22 @@
       <span class="input-xlarge uneditable-input"><%= @product.over_royalty_percentage %></span>
     </div>
   </div>
+
+  <div class="control-group">
+    <label class="control-label" for="number">商品详细介绍</label>
+    <div class="controls">
+      <%= @product.body_html%><br>
+      <% arr=@product.photo_url.split(";") unless @product.photo_url.blank? %>
+      <% if !arr.blank? %>
+        <% for i in 1..arr.length do %>
+         <% if !arr[i].blank? %>
+           <img src="<%= arr[i]%>" alt="图片"/><br>
+         <% end %> 
+        <% end %>
+      <% end %> 
+    </div>
+  </div>
+
   <%= link_to '编辑', edit_product_path(@product),:class=>"btn btn-large btn-primary" %> |
   <%= link_to '返回', products_path,:class=>"btn btn-large btn-inverse" %>
 

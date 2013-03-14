@@ -1,0 +1,84 @@
+ <div class="span8">
+ 
+        <div class="span3">
+          <div class="thumbnail">
+             <%= image_tag img_url(@product1.img_url_url(:thumb_medium)) %>
+          </div>
+        </div>
+        <div class="span3 page-header">
+            <h3><%= @product1.name %></h3>
+            <h4>库存数量：<span class="badge badge-success"> <%= format_data @product1.stock_quantity %> </span> <%=@product1.unit.name %> </h4>
+            <% if @product1.is_rural_areas %>
+              <p><span class="label label-important">三下乡产品</span></p>
+            <% end %>
+
+            <%= form_for @order,:url =>"/orders",:remote=>true,:method=>"post" do |f| %>
+             <p><strong>预定价格：</strong>
+                 <%= f.hidden_field :sum, :value=>@product1.sell_price %>
+               <span class="badge badge-warning"><%= @product1.sell_price %></span> 元
+             </p>
+             <% if !@product1.stock_quantity.blank? && @product1.stock_quantity.to_i > 0 %>
+                 <%= hidden_field_tag(:p_id,@product1.id) %>
+               <p><strong>数量:</strong>
+                <%= f.number_field :amount,:max=>2,:value=>1,:size=>"5" %>（最多两台）
+               <p>
+               <%= f.submit "预订",:class=>"btn btn-primary" %>
+             <% end %> 
+           <% end %>
+
+        </div>
+        <br>
+        
+        <div class="span7">
+          <ul id="myTab" class="nav nav-tabs">
+            <li class="active"><a href="#home" data-toggle="tab">商品详情</a></li>
+            <li ><a href="#home1" data-toggle="tab">你可能喜欢的商品</a></li>
+          </ul>
+          <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in active " id="home">
+              <h3><%= @product1.name %></h3>
+              <p><b>简介：</b> <%= @product1.summary || "没有填写商品简介"%> </p>
+              <p><b>详细介绍：</b> <%= @product1.body_html %> </p>
+              <div class="thumbnail">
+                <% arr=@product1.photo_url.split(";") unless @product1.photo_url.blank? %>
+                  <% if !arr.blank? %>
+                    <% for i in 1..arr.length do %>
+                     <% if !arr[i].blank? %>
+                       <img src="<%= arr[i]%>" alt="图片"/><br>
+                     <% end %> 
+                    <% end %>
+                  <% end %> 
+              </div>
+            </div>
+            <div class="tab-pane fade in active " id="home1">
+                <% if !@products.blank? %>
+                   <% @products.each do |product| %>
+                     <%= render "say/product",:target=>product %>
+                   <% end %>
+                <% elsif !products2.blank? %>
+                   <% @products2.each do |product| %>
+                     <%= render "say/product",:target=>product %>
+                   <% end %>
+                <% else%>
+                  <b>没有可推荐的产品！<b>
+                <%end %>
+                  
+            </div>
+                
+          </div>
+
+         </div><!--end span9-->
+
+        
+            
+      </div><!--end span12-->
+
+<div id="myOrder" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">提示</h3>
+  </div>
+  <div id="content" class="modal-body" style="color:red">
+
+  </div>
+</div>

@@ -26,6 +26,13 @@
       </div>
 
       <div class="control-group">
+        <%= f.label :summary,"商品简介",:class=>"control-label" %>
+        <div class="controls">
+          <%= f.text_area :summary,:placeholder=>"商品简" %>
+        </div>
+      </div>
+
+      <div class="control-group">
         <%= f.label :unit,"单位",:class=>"control-label" %>
         <div class="controls">
 
@@ -178,16 +185,25 @@
       </div>
 
       <div class="control-group">
-        <label class="control-label" for="inputEmail">商品详细图片</label>
+        <label class="control-label" for="inputEmail">商品详细</label>
         <div class="controls">
-          <input type="text"  placeholder="例如：0.95"><br><br>
-          <input type="text"  placeholder="例如：0.95"><br><br>
-          <input type="text"  placeholder="例如：0.95"><br><br>
-          <input type="text"  placeholder="例如：0.95"><br><br>
-          <input type="text"  placeholder="例如：0.95">
+          <input type="button" id="pic_s" value="上传图片">
+          <div id="add_pic"> 
+          </div>
+          <div style="display:none">
+              <input type="file" id="pic" >
+          </div>
+          <%= f.hidden_field :photo_url,:id=>"imgurl" %>
         </div>
       </div>
 
+       <div class="control-group">
+        <label class="control-label" for="inputEmail"></label>
+        <div class="controls">
+           <%= f.text_area :body_html,:id=>"editor",:style =>"height:400px;width:200px"%>
+        </div>
+      </div>
+       
       <div class="control-group">
         <div class="controls">
           <%= f.submit "保存",:class=>"btn btn-primary"%>

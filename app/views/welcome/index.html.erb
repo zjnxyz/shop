@@ -1,30 +1,40 @@
 <div id="myCarousel" class="carousel slide" align="center">
   <div class="carousel-inner">
-    <div class="item active" >
-      <img src="/assets/bootstrap-mdo-sfmoma-01.jpg" alt="" class="img-polaroid">
-      <div class="carousel-caption">
-        <h4>First Thumbnail label</h4>
-        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-      </div>
-    </div>
-    <div class="item">
-      <img src="/assets/bootstrap-mdo-sfmoma-02.jpg" alt="" class="img-polaroid">
-      <div class="carousel-caption">
-        <h4>Second Thumbnail label</h4>
-        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-      </div>
-    </div>
-    <div class="item">
-      <img src="/assets/bootstrap-mdo-sfmoma-03.jpg" alt="" class="img-polaroid">
-      <div class="carousel-caption">
-        <h4>Third Thumbnail label</h4>
-        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-      </div>
-    </div>
-  </div>
+    <% if !@products1.blank? %>
+     <% i=0 %>
+      <% @products1.each do |product| %>
+        <% if i==0 %>
+          <div class="item active" >
+            <%= link_to show_product_say_path(product) do %>
+              <%= image_tag(img_url(product.img_url_url(:thumb_large)),:class=>"img-polaroid") %>
+              <div class="carousel-caption">
+                <h4><%= product.name %></h4>
+                <p><%= product.summary || "没有填写商品简介"%></p>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="item " >
+            <%= link_to show_product_say_path(product) do %>
+              <%= image_tag(img_url(product.img_url_url(:thumb_large)),:class=>"img-polaroid") %>
+              <div class="carousel-caption">
+                <h4><%= product.name %></h4>
+                <p><%= product.summary || "没有填写商品简介"%></p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+         <% i+=1 %>
+      <% end %>
+    <% end %>
+   </div>
    <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
    <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+
 </div>
+
+
+
 
 <div align="center">
   <form class="form-search">
@@ -44,135 +54,48 @@
 <div class="row">
   <div class="span4">
     <h2>品牌街</h2>
-    <div class="container-fluid metro">
-      <a class="tile wide imagetext" href="#">
-        <div class="image-wrapper">
-          <img src="content/img/tile-wide-collection-3.gif" alt=""/>
-        </div>
-        <div class="column-text">
-          <div class="text-header3">Adipisci velit, sed quia non numquam eius modi tempora.</div>
-        </div>
-      </a>
-      <a class="tile wide imagetext" href="#">
-        <div class="image-wrapper">
-          <img src="content/img/tile-wide-collection-3.gif" alt=""/>
-        </div>
-        <div class="column-text">
-          <div class="text-header3">Adipisci velit, sed quia non numquam eius modi tempora.</div>
-        </div>
-      </a>
-
-      <a class="tile wide imagetext" href="#">
-        <div class="image-wrapper">
-          <img src="content/img/tile-wide-collection-3.gif" alt=""/>
-        </div>
-        <div class="column-text">
-          <div class="text-header3">Adipisci velit, sed quia non numquam eius modi tempora.</div>
-        </div>
-      </a>
-
-      <a class="tile wide imagetext" href="#">
-        <div class="image-wrapper">
-          <img src="content/img/tile-wide-collection-3.gif" alt=""/>
-        </div>
-        <div class="column-text">
-          <div class="text-header3">Adipisci velit, sed quia non numquam eius modi tempora.</div>
-        </div>
-      </a>
-
-      <a class="tile wide imagetext" href="#">
-        <div class="image-wrapper">
-          <img src="content/img/tile-wide-collection-3.gif" alt=""/>
-        </div>
-        <div class="column-text">
-          <div class="text-header3">Adipisci velit, sed quia non numquam eius modi tempora.</div>
-        </div>
-      </a>
-
-    </div>
-
-    <a class="btn" href="#">View details &raquo;</a></p>
+    <ol>
+      <% if !@brands.blank? %>
+        <% @brands.each do |brand| %>
+          <li>
+            <%= link_to find_p_by_brand_say_path(brand) do %>
+              <%= image_tag img_url(brand.imgurl_url(:thumb_large))%>
+            <% end %> 
+          </li><br>
+        <% end %>
+        
+      <% end %>
+    </ol>
   </div>
+
   <div class="span4">
     <h2>产品街</h2>
-    <div class="container-fluid metro">
-
-      <a class="tile wide image collection" href="#">
-        <img class="tile-image-main" src="content/img/sample1.png" alt=""/>
-        <div class="mini-tiles">
-          <img src="content/img/tile-wide-collection-1.jpg" alt=""/>
-          <img src="content/img/tile-wide-collection-2.png" alt=""/>
-          <img src="content/img/tile-wide-collection-3.gif" alt=""/>
-          <img src="content/img/tile-wide-collection-4.png" alt=""/>
-        </div>
-      </a>
-
-      <a class="tile wide image collection" href="#">
-        <img class="tile-image-main" src="content/img/sample1.png" alt=""/>
-        <div class="mini-tiles">
-          <img src="content/img/tile-wide-collection-1.jpg" alt=""/>
-          <img src="content/img/tile-wide-collection-2.png" alt=""/>
-          <img src="content/img/tile-wide-collection-3.gif" alt=""/>
-          <img src="content/img/tile-wide-collection-4.png" alt=""/>
-        </div>
-      </a>
-
-
-      <a class="tile wide image collection" href="#">
-        <img class="tile-image-main" src="content/img/sample1.png" alt=""/>
-        <div class="mini-tiles">
-          <img src="content/img/tile-wide-collection-1.jpg" alt=""/>
-          <img src="content/img/tile-wide-collection-2.png" alt=""/>
-          <img src="content/img/tile-wide-collection-3.gif" alt=""/>
-          <img src="content/img/tile-wide-collection-4.png" alt=""/>
-        </div>
-      </a>
-
-
-      <a class="tile wide image collection" href="#">
-        <img class="tile-image-main" src="content/img/sample1.png" alt=""/>
-        <div class="mini-tiles">
-          <img src="content/img/tile-wide-collection-1.jpg" alt=""/>
-          <img src="content/img/tile-wide-collection-2.png" alt=""/>
-          <img src="content/img/tile-wide-collection-3.gif" alt=""/>
-          <img src="content/img/tile-wide-collection-4.png" alt=""/>
-        </div>
-      </a>
-
-
-      <a class="tile wide image collection" href="#">
-        <img class="tile-image-main" src="content/img/sample1.png" alt=""/>
-        <div class="mini-tiles">
-          <%= image_tag("tile-wide-collection-1.jpg") %>
-
-          <img src="content/img/tile-wide-collection-2.png" alt=""/>
-          <img src="content/img/tile-wide-collection-3.gif" alt=""/>
-          <img src="content/img/tile-wide-collection-4.png" alt=""/>
-        </div>
-      </a>
-
-      <p align="right"><a class="btn" href="#">View details &raquo;</a></p>
-
-    </div>
+    <ol>
+      <% if !@categories.blank? %>
+        <% @categories.each do |c| %>
+          <li>
+            <%= link_to find_p_by_category_say_path(c) do %>
+              <%= image_tag img_url(c.imgurl_url(:thumb_medium))%>
+            <% end %> 
+          </li><br>
+        <% end %> 
+      <% end %>
+    </ol>
   </div>
   <div class="span4" align="left">
     <h2>热卖榜</h2>
-    <div class="container-fluid metro" >
-      <a class="tile wide imagetext" href="#" >
-        <div class="image-wrapper"  >
-          <img src="content/img/tile-wide-collection-3.gif" alt=""/>
-        </div>
-        <div class="column-text">
-          <div class="text-header">Adipisci velit, sed quia non numquam eius modi tempora.</div>
-          <div class="text">Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</div>
-          <div class="text">Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</div>
-          <div class="text">Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</div>
-          <div class="text">Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</div>
-        </div>
-      </a>
-
-    </div>
-    <p align="right"><a class="btn" href="#">View details &raquo;</a></p>
+    <ol>
+      <% if !@products2.blank? %>
+        <% @products2.each do |p| %>
+          <li>
+            <%= link_to show_product_say_path(p) do %>
+              <%= image_tag img_url(p.img_url_url(:thumb_medium))%>
+            <% end %> 
+          </li><br>
+        <% end %> 
+      <% end %>
+    </ol>
   </div>
+
 </div>
 <hr>

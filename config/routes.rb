@@ -1,6 +1,9 @@
 Shop::Application.routes.draw do
 
 
+  resources :photos
+
+
   get "apple/index"
 
   get "welcome/index"
@@ -58,6 +61,7 @@ Shop::Application.routes.draw do
   resources :say do
     get :find_p_by_brand, :on=>:member
     get :find_p_by_category, :on=>:member
+    get :show_product, :on=>:member
   end
 
   controller :repurchases do

@@ -1,4 +1,5 @@
  <div class="thumbnail span3 ">
+
  	<%= image_tag img_url(target.img_url_url(:thumb_medium)) %>
     <div class="caption">
 	    <h4><%= target.name %></h4>
@@ -22,7 +23,7 @@
 		       	<%= f.number_field :amount,:max=>2,:value=>1,:size=>"5" %>（最多两台）
 		       <p>
 		       <%= f.submit "预订",:class=>"btn btn-primary" %>
-		       <a href="#" class="btn">详细</a>
+		       <%= link_to "详细",show_product_say_path(target), :class=>"btn btn-info" %>
 	       <% end %>
 	      
 	     <% end %>

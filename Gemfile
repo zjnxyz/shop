@@ -36,6 +36,9 @@ gem 'carrierwave'
 #gem 'carrierwave-upyun', '0.1.5'
 gem 'mini_magick','3.5'#, :require => false
 
+# Markdown 格式
+gem "redcarpet", "~> 2.2.2"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

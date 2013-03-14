@@ -124,6 +124,7 @@
  <%= javascript_include_tag 'holder' %>
  <%= javascript_include_tag 'jquery.validationEngine' %>
  <%= javascript_include_tag 'jquery.validationEngine-zh_CN' %>
+ <%= javascript_include_tag 'jquery.html5-fileupload' %>
  
 
 <script type="text/javascript">
@@ -132,7 +133,7 @@
 
    $("#form_validator").validationEngine() 
    
-  })
+    })
 
   $('.date').datepicker({"format": "yyyy-mm-dd"});
   $('#getUser').click(function(){ 
@@ -162,10 +163,7 @@
                  html2+='<b style="color:#F00">'+data.integral+'</b>分)</div></div>';
                  $('#user2').html(html2);
 
-
                 }
-                 
-            
              }else{
               alert("你输入的用户编号不存在");
              }
@@ -180,6 +178,66 @@
           }
        });
    });
+
+$("#pic_s").bind("click",func)
+
+function func(){
+     //$("#pic_s").unbind('click');
+     //$("#pic_s").bind('click', arguments.callee);
+     $("#pic").unbind();
+   $("#pic").click();
+     opts ={
+              url : "/photos",
+              type : "POST",
+              beforeSend : function(){
+                $("#pic_s").hide();
+                $("#pic_s").before("<span class='loading'>上传中...</span>");
+              },
+              success : function(result, status, xhr){
+                 $("#pic_s").parent().find("span").remove();
+                 $("#pic_s").show();
+
+                 $("#add_pic").html($("#add_pic").html()+"<div><i class='icon-picture'></i>上传成功</div>");
+                 var imgurl=$('#imgurl').val()
+                 $('#imgurl').attr("value",imgurl+";"+result)
+                 //alert(result)
+                 //appendImageFromUpload(result);
+              }   
+           }
+       $("#pic").fileUpload(opts)
+       return false
+
+}
+
+function appendImageFromUpload(srcs){
+  var txtBox = $("#editor")
+  var cursurPosition=-1;
+  cursurPosition= txtBox.selectionStart;
+  //if(txtBox.selectionStart){//非IE浏览器
+     // cursurPosition= txtBox.selectionStart;
+  //}else{//IE
+     // var range = document.selection.createRange();
+          //range.moveStart("character",-txtBox.value.length);
+               // cursurPosition=range.text.length;
+  //}
+    //cursurPosition = cursurPosition==0?1:cursurPosition;
+    alert(txtBox.value)
+    var str = txtBox.value.substring(0,cursurPosition-1);
+    var str1=txtBox.value.substring(cursurPosition);
+
+ var src_merged = ""
+ for(src in srcs){
+   src_merged = "![](#{src})\n"
+ }
+
+  txtBox.val(str + src_merged + str1)
+  //txtBox.caretPos(caret_pos+src_merged.length)
+  txtBox.focus()
+}
+
+
+
+
 
 </script>
 
