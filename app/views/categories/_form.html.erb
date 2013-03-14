@@ -16,7 +16,7 @@
     <div class="control-group">
       <%= f.label :name,"产品图片",:class=>"control-label" %>
       <div class="controls">
-        <%= image_tag(@category.imgurl_url(:thumb_medium)) if @category.imgurl.blank?%>
+        <%= image_tag(@category.imgurl_url(:thumb_medium)) if !@category.imgurl.blank?%>
         <%= f.file_field :imgurl %>
         <%= f.hidden_field :imgurl_cache %>
       </div>

@@ -59,7 +59,7 @@
         <% @brands.each do |brand| %>
           <li>
             <%= link_to find_p_by_brand_say_path(brand) do %>
-              <%= image_tag img_url(brand.imgurl_url(:thumb_large))%>
+              <%= image_tag img_url(brand.imgurl_url(:thumb_medium))%>
             <% end %> 
           </li><br>
         <% end %>

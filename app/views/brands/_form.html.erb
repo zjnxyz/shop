@@ -13,7 +13,7 @@
     <div class="control-group">
         <%= f.label :name,"商标",:class=>"control-label" %>
         <div class="controls">
-          <%= image_tag(@brand.imgurl_url(:thumb_medium)) if @brand.imgurl.blank?%>
+          <%= image_tag(@brand.imgurl_url(:thumb_medium)) if !@brand.imgurl.blank?%>
           <%= f.file_field :imgurl %>
           <%= f.hidden_field :imgurl_cache %>
         </div>
