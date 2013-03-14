@@ -7,6 +7,19 @@
 <% if  @applications.blank? %>
    <p class="lead">您还没有任何申请单！</p>
 <% else %>
+  <% if !session[:staff_id].blank? %>
+     <%= form_for @search, :remote => true,:url => "/applications/index_user", :html => {:method => :get} do |f| %>
+          会员编号：<%= f.search_field :user_number_gt,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+          会员姓名：<%= f.search_field :user_name_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+          <br><br>
+          销售单号：<%= f.search_field :sell_id_gteq,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+          商品名称：<%= f.search_field :sell_product_name_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %>
+          
+
+        <%= f.submit "查找",:class =>"btn btn-success" %>
+     <% end %>
+
+  <% end %>
 
   <table class="table table-bordered">
     <thead>

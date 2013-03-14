@@ -16,7 +16,8 @@ class ApplicationsController < ApplicationController
     @search=Application.search(params[:search])
     @applications =Application.where("is_handle = ?",false).page(params[:page]).per(5)
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # see_staff.html.erb
+      format.js{ render :layout => false }
       format.json { render json: @applications }
     end
   end
@@ -103,9 +104,34 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  #管理员处理申请
+  def handle_app
+    @id=params[:id].to_i
+    @application=Application.find(@id)
+    respond_to do |format|
+      if @application.update_attributes(:is_handle =>true)
+
+         @applications =Application.where("is_handle = ?",false).page(params[:page]).per(5)
+         flash[:notice]="处理成功！"
+         format.html { redirect_to action: "see_staff"}
+         format.js{ render :layout => false }
+         format.json { head :no_content }
+         
+      else
+        format.html { render action: "see_staff" }
+        format.json { render json: @application.errors, status: :unprocessable_entity }
+      end
+    end
+    
+  end
+
   #得到用户的申请清单
   def index_user
-    @applications=Application.where("user_id = ?",session[:user_id]).order("created_at desc") 
+        @applications=Application.where("user_id = ?",session[:user_id]).order("created_at desc") 
+        respond_to do |format|
+          format.html # index_user.html.erb
+          format.json { render json: @applications }
+        end  
   end
 
   #直接创建申请

@@ -1,11 +1,9 @@
 <td><%= target.sell.id %></td>
   <td>
-    <a class="tile wide imagetext wideimage" href="/products/<%= target.id %>">
       <%= image_tag img_url(target.sell.product.img_url_url(:thumb_medium)),:class=>"img-rounded" %>
       <div class="textover-wrapper">
         <div class="text2"><%= target.sell.product.name %></div>
       </div>
-    </a>
   </td>
   <td><%= t_app_type target.app_type %></td>
   <td><%= format_date target.created_at %></td>
@@ -16,7 +14,10 @@
     <% if !target.is_handle %>
        <%= link_to target, method: :delete,:remote=>true,:class=>"btn btn-danger", data: { confirm: '是否真的要取消订单?' } do%>
         <i class="icon-trash"></i>取消申请
-       <%end%>
+       <%end%><br><br>
+       <%= link_to handle_app_application_path(target),:class=>"btn btn-primary",:remote=>true do %>
+        <i class="icon-wrench"></i>处理
+       <% end %>
     <% else %>
       <span class="label label-success">已处理不能操作！</span>
     <% end %>

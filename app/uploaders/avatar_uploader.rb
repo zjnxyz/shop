@@ -9,8 +9,9 @@ class AvatarUploader < BaseUploader
     process :resize_to_fill => [100,100]
     process :strip
   end
+
   version :thumb_large do
-    process :resize_to_limit => [800,500]
+    process :resize_to_fill => [800,500]
     process :strip
   end
   # version :scaled_full do

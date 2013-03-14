@@ -89,7 +89,9 @@
         <% @products2.each do |p| %>
           <li>
             <%= link_to show_product_say_path(p) do %>
-              <%= image_tag img_url(p.img_url_url(:thumb_medium))%>
+              <%= image_tag img_url(p.img_url_url(:thumb_medium))%><br>
+              <span><%= p.name %></span>
+              <span style="color:red">销售量：<span class="badge badge-success"> <%= format_data p.sales_volume %> </span> <%=p.unit.name %> </span>
             <% end %> 
           </li><br>
         <% end %> 

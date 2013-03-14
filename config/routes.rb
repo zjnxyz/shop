@@ -74,6 +74,7 @@ Shop::Application.routes.draw do
 
  resources :applications do
   get :pre_create_app, :on=>:member
+  get :handle_app,:on=>:member
  end
 
 
