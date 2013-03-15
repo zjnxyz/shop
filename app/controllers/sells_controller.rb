@@ -140,6 +140,7 @@ class SellsController < ApplicationController
   def total_staff_sell
     @search=Sell.search(params[:search])
     @sells = @search.where("staff_id = ? and status = ?",session[:staff_id],false).order("created_at desc").page(params[:page]).per(5) 
+    @sell_money=Sell.where("staff_id = ? and status = ?",session[:staff_id],false).sum("actual_sum")
     respond_to do |format|
       format.html # index.html.erb
       format.js{ render :layout => false }
@@ -152,6 +153,7 @@ class SellsController < ApplicationController
   def total_staff_all_sell
     @search=Sell.search(params[:search])
     @sells=@search.where("status = ?",false).order("created_at desc").page(params[:page]).per(5) 
+    @sell_money=@search.where("status = ?",false).sum("actual_sum")
     respond_to do |format|
       format.html # index.html.erb
       format.js{ render :layout => false }

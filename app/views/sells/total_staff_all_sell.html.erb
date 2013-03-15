@@ -1,21 +1,26 @@
 <div class="page-header">
     <h3>员工销售清单</h3>
 <div>
-        <%= form_for @search, :remote =>true,:url =>"/sells/total_staff_sell", :html => {:method => :get} do |f| %>
+        <%= form_for @search, :remote =>true,:url =>"/sells/total_staff_all_sell", :html => {:method => :get} do |f| %>
           起始日期：<%= f.search_field :created_at_gte,:class=>"input-medium search-query date" %>
           终止日期：<%= f.search_field :created_at_lte,:class=>"input-medium search-query date" %><br><br>
-          员工编号：<%= f.search_field :user_number_gt,:class=>"input-medium search-query"%>
-          员工姓名：<%= f.search_field :user_name_contains,:class=>"input-medium search-query"%>
+          员工编号：<%= f.search_field :staff_number_gt,:class=>"input-medium search-query"%>
+          员工姓名：<%= f.search_field :staff_name_contains,:class=>"input-medium search-query"%>
           <%= f.submit "查找",:class =>"btn btn-success" %>
        <% end %> 
     </div>
  </div>
 <div>
+  <p class="text-right">
+    <strong>销售金额：</strong><span id="sell_money" class="label label-success">￥<%= @sell_money.round(2) %></span>
+     &nbsp &nbsp &nbsp 
+  </p>
                <table class="table table-bordered">
                  <thead>
                    <tr>
                      <th>销售日期</th>
                      <th>销售单号</th>
+                     <th>商品编号</th>  
                      <th>商品</th>                     
                      <th>会员姓名</th>
                      <th>预售价</th>

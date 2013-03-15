@@ -1,0 +1,17 @@
+<div align="center">
+  <%= form_tag("/say/search",:class=>"form-search",:method => "post" ) do %>
+     <div class="input-append">
+      <input type="text" name="param" class="span4 search-query" placeholder="关键字">
+      <select name="type" class="span1">
+        <option value="1">品牌</option>
+        <option value="2">产品</option>
+        <option value="3" selected="selected">商品</option>
+      </select>
+      <button type="submit" class="btn">搜索</button>
+    </div>
+  <% end %>
+  <form class="form-search">
+   
+  </form>
+
+</div>

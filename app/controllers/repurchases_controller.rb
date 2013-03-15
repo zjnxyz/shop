@@ -8,6 +8,7 @@ class RepurchasesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.js{ render :layout => false }
       format.json { render json: @repurchases }
     end
   end

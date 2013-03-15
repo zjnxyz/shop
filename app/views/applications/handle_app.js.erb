@@ -1,0 +1,3 @@
+$("#message_notice").html('<%= render "share/notice_message", :target => flash[:notice] %>')
+$("#search").empty().html("<%=j render @applications,:locals => {:i=>0,:lay=>2} %>")
+$("#page").empty().html("<%=j paginate @applications %>")

@@ -1,7 +1,7 @@
 <div class="page-header">
     <h3>退货清单</h3>
     <div>
-        <%= form_for @search, :remote => true,:url => sells_url, :html => {:method => :get} do |f| %>
+        <%= form_for @search, :remote => true,:url => repurchases_url, :html => {:method => :get} do |f| %>
           会员编号：<%= f.search_field :user_number_gt,:class=>"input-medium search-query",:placeholder=>"搜索" %>
           会员姓名：<%= f.search_field :user_name_contains,:class=>"input-medium search-query",:placeholder=>"搜索" %>
           <br><br>
