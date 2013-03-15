@@ -22,7 +22,14 @@
                <p><strong>数量:</strong>
                 <%= f.number_field :amount,:max=>2,:value=>1,:size=>"5" %>（最多两台）
                <p>
-               <%= f.submit "预订",:class=>"btn btn-primary" %>
+               
+                <% if !session[:staff_id].blank? %>
+                  <%= link_to pre_add_sell_product_path(@product1),:class=>"btn btn-success" do%>
+                   <i class=" icon-inbox"></i>购买
+                  <%end%>
+                <% else %>
+                  <%= f.submit "预订",:class=>"btn btn-primary" %>
+                <% end %>
              <% end %> 
            <% end %>
 

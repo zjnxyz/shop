@@ -3,7 +3,7 @@
  	<%= image_tag img_url(target.img_url_url(:thumb_medium)) %>
     <div class="caption">
 	    <h4><%= target.name %></h4>
-	    <p><%= target.summary%></p>
+	    <p><%= target.summary || "没有商品简介" %></p>
 	    <p><strong>库存数量：</strong>
 	      	<span class="badge badge-success">
 	      		<%= format_data target.stock_quantity %>
@@ -22,7 +22,14 @@
 		       <p><strong>数量:</strong>
 		       	<%= f.number_field :amount,:max=>2,:value=>1,:size=>"5" %>（最多两台）
 		       <p>
-		       <%= f.submit "预订",:class=>"btn btn-primary" %>
+		       <% if !session[:staff_id].blank? %>
+                  <%= link_to pre_add_sell_product_path(target),:class=>"btn btn-success" do%>
+                   <i class=" icon-inbox"></i>购买
+                  <%end%>
+                <% else %>
+                  <%= f.submit "预订",:class=>"btn btn-primary" %>
+                <% end %>
+
 		       <%= link_to "详细",show_product_say_path(target), :class=>"btn btn-info" %>
 	       <% end %>
 	      
