@@ -81,4 +81,27 @@ class MembersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  #过滤器，表示只有管理员才能访问members有关的页面
+  before_filter :require_manage
+  def require_manage
+    if !is_manage
+      flash[:error] = "对不起，您还无权访问该页面"
+      redirect_to "/welcome/index"
+    end
+  end
+
+  def is_manage
+    if session[:staff_id].blank?
+      false
+    else
+      @staff=Staff.find(session[:staff_id])
+      if @staff.staff_type==1
+        true
+      else
+        false
+      end 
+    end
+  end
+
 end

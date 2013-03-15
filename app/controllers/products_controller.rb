@@ -1,5 +1,9 @@
 # coding: utf-8
 class ProductsController < ApplicationController
+
+  #创建一个新产品需要管理员的权限
+  skip_before_filter :require_manage,:except =>[:new,:create]
+
   autocomplete :product, :number,:full => true
 
   # GET /products
@@ -213,6 +217,29 @@ class ProductsController < ApplicationController
 
     @product=Product.find(params[:id])
 
+  end
+
+  
+  #过滤器，表示只有管理员才能访问products有关的页面
+  before_filter :require_manage
+  def require_manage
+    if !is_manage
+      flash[:error] = "对不起，您还无权访问该页面"
+      redirect_to "/welcome/index"
+    end
+  end
+
+  def is_manage
+    if session[:staff_id].blank?
+      false
+    else
+      @staff=Staff.find(session[:staff_id])
+      if @staff.staff_type==1
+        true
+      else
+        false
+      end 
+    end
   end
 
 end
