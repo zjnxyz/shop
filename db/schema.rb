@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130314013035) do
+ActiveRecord::Schema.define(:version => 20130331063449) do
+
+  create_table "acounts", :force => true do |t|
+    t.string   "hash_url"
+    t.integer  "u_id"
+    t.integer  "acount_type"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "applications", :force => true do |t|
     t.integer  "sell_id"
@@ -42,6 +50,22 @@ ActiveRecord::Schema.define(:version => 20130314013035) do
     t.datetime "updated_at", :null => false
     t.string   "imgurl"
   end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "images", :force => true do |t|
     t.string   "img_url"

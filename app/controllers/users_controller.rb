@@ -56,6 +56,8 @@ class UsersController < ApplicationController
     @user=auto_set_value(@user)
     respond_to do |format|
       if @user.save
+        #启动deplay_jb,使用rake jobs:work ---使用异步发邮件
+        AllMailer.delay.welcome_email(@user)
         format.html { redirect_to @user, notice: '会员创建成功.初始密码是123456' }
         format.json { render json: @user, status: :created, location: @user }
       else
@@ -167,7 +169,8 @@ class UsersController < ApplicationController
          format.json { render json: @user.errors, status: :unprocessable_entity } 
       end
     end
-
   end
+
+  
 
 end

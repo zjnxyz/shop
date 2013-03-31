@@ -1,3 +1,4 @@
+# coding: utf-8
 class AppleController < ApplicationController
   def index
   	@search=Application.search(params[:search])

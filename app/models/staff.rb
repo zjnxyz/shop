@@ -24,6 +24,13 @@ class Staff < ActiveRecord::Base
  
   #validate :password_must_be_present
 
+  def self.auth_has_staff(number)
+     if staff = find_by_number(number) || staff = find_by_card_id(number) || staff = find_by_phone(number) || find_by_email(number)
+       staff
+     end  
+    
+  end
+
   def Staff.authenticate(number,password)
     if staff = find_by_number(number) || staff = find_by_card_id(number) || staff = find_by_phone(number) || find_by_email(number)
       if staff.hash_password ==  encrypt_password(password, staff.salt)

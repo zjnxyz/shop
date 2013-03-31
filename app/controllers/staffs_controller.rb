@@ -47,6 +47,9 @@ class StaffsController < ApplicationController
     @staff=auto_set_value(@staff)
     respond_to do |format|
       if @staff.save
+        #启动deplay_jb,使用rake jobs:work ---使用异步发邮件
+        AllMailer.delay.welcome_email(@user)
+        
         format.html { redirect_to @staff, notice: '员工信息添加成功，初始密码为：123456' }
         format.json { render json: @staff, status: :created, location: @staff }
       else

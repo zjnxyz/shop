@@ -1,6 +1,5 @@
 Shop::Application.routes.draw do
 
-
   resources :photos
 
 
@@ -61,12 +60,28 @@ Shop::Application.routes.draw do
   controller :say do
     post "say/search"=>:search_product
   end
-
   resources :say do
     get :find_p_by_brand, :on=>:member
     get :find_p_by_category, :on=>:member
     get :show_product, :on=>:member
   end
+
+
+  controller :acounts do
+    get 'acounts/user_app_find_password' => :pre_user_app_find_password
+    post 'acounts/user_app_find_password'=> :user_app_find_password
+    post 'acounts/user_modify_password'=>:user_modify_password
+    get 'acounts/staff_app_find_password' => :pre_staff_app_find_password
+    post 'acounts/staff_app_find_password'=> :staff_app_find_password
+    post 'acounts/staff_modify_password'=>:staff_modify_password
+  end
+
+  resources :acounts do
+    get :pre_user_modify_password, on: :member
+    get :pre_staff_modify_password, on: :member
+  end
+
+ 
 
   controller :repurchases do
     post 'repurchases/handle_resell'=>:handle_resell

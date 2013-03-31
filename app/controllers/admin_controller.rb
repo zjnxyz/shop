@@ -1,3 +1,4 @@
+# coding: utf-8
 class AdminController < ApplicationController
 	#skip_before_filter :require_login
   def index

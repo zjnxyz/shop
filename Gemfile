@@ -39,6 +39,9 @@ gem 'mini_magick','3.5'#, :require => false
 # Markdown 格式
 gem "redcarpet", "~> 2.2.2"
 
+#异步插件，用来发送异步邮件的
+gem 'delayed_job_active_record'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

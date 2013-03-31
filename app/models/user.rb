@@ -25,11 +25,22 @@ class User < ActiveRecord::Base
   validates  :password, :confirmation =>true
   validates  :name, :presence => true
 
+  def User.auth_has_user(number)
+    if user=User.find_by_number(number)||user=User.find_by_email(number)||user=User.find_by_phone(number)
+      true
+    end
+  end
+
   def User.authenticate(number,password)
     if user=User.find_by_number(number)||user=User.find_by_email(number)||user=User.find_by_phone(number)
-     if user.hash_password == encrypt_password(password, user.salt)
-       user
-     end
+      if password != 0
+        if user.hash_password == encrypt_password(password, user.salt)
+          user
+        end
+      else
+        user
+      end
+     
     end
   end
 
