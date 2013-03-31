@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Hash url:</b>
+  <%= @acount.hash_url %>
+</p>
+
+<p>
+  <b>U:</b>
+  <%= @acount.u_id %>
+</p>
+
+<p>
+  <b>Acount type:</b>
+  <%= @acount.acount_type %>
+</p>
+
+
+<%= link_to 'Edit', edit_acount_path(@acount) %> |
+<%= link_to 'Back', acounts_path %>

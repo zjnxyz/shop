@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  hash_url: MyString
+  u_id: 1
+  acount_type: 1
+
+two:
+  hash_url: MyString
+  u_id: 1
+  acount_type: 1
