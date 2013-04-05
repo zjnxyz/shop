@@ -30,7 +30,14 @@ Shop::Application.routes.draw do
   #get "products/pre_add_product"
   #post "products/add_product"
 
+
   root :to => "welcome#index"
+
+  controller :chart do
+    get "chart/staff_chart"=>:pre_staff_chart
+    post "chart/staff_chart"=>:staff_chart
+
+  end
 
   controller :products do
     get 'products/add_product' => :pre_add_product

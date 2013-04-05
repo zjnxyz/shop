@@ -11,8 +11,14 @@
   <%= stylesheet_link_tag 'scaffolds' %> 
   <%= stylesheet_link_tag 'validationEngine.jquery' %>
   <%= stylesheet_link_tag 'template' %> 
+
+  <%= stylesheet_link_tag 'jquery.jqChart' %>
+  <%= stylesheet_link_tag 'jquery.jqRangeSlider' %> 
+ 
  
   <%= csrf_meta_tags %>
+
+
    
  
   <link rel="stylesheet" type="text/css" href="/assets/google-code-prettify/prettify.css" >
@@ -125,15 +131,22 @@
  <%= javascript_include_tag 'jquery.validationEngine' %>
  <%= javascript_include_tag 'jquery.validationEngine-zh_CN' %>
  <%= javascript_include_tag 'jquery.html5-fileupload' %>
+ <%= javascript_include_tag 'jquery.jqChart.min' %>
+ <%= javascript_include_tag 'jquery.jqRangeSlider.min' %>
  
 
 <script type="text/javascript">
 
-  $(document).ready(function() { 
+ $(document).ready(function() { 
 
-   $("#form_validator").validationEngine() 
+
+ });
+
+  $(document).ready(function() { 
+  
+   $("#form_validator").validationEngine();
    
-    })
+  });
 
   $('.date').datepicker({"format": "yyyy-mm-dd"});
   $('#getUser').click(function(){ 

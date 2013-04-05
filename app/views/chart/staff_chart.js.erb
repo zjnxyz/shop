@@ -1,0 +1,38 @@
+var data1 = [];
+var data2 = [];
+  <%= @data1.each do |d|%>
+    data1.push(['<%= Staff.find(d[0]).name%>', <%= d[1]%>]);
+  <% end %>
+  <%= @data2.each do |d|%>
+    data2.push(['<%= Staff.find(d[0]).name%>', <%= d[1]%>]);
+  <% end %>
+
+
+$('#jqChart').jqChart({
+                title: { text: 'Multiple Axes' },
+                axes: [
+                         {
+                             name: 'y1',
+                             location: 'left'
+                         },
+                         {
+                             name: 'y2',
+                             location: 'right',
+                             strokeStyle: '#FCB441',
+                             majorGridLines: { strokeStyle: '#FCB441' },
+                             majorTickMarks: { strokeStyle: '#FCB441' }
+                         }
+                      ],
+                series: [
+                            {
+                                type: 'column',
+                                axisY: 'y1',
+                                data: data1 
+                            },
+                            {
+                                type: 'line',
+                                axisY: 'y2',
+                                data: data2
+                            }
+                        ]
+            });
