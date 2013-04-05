@@ -139,6 +139,15 @@
 
  $(document).ready(function() { 
 
+    $("#c_id").change(function(){
+      var c_id = $('#c_id').find("option:selected").val();
+      getProductBycate(c_id);
+    });
+
+    $("#b_id").change(function(){
+      var b_id = $('#b_id').find("option:selected").val();
+      getProductByBrand(b_id);
+    });
 
  });
 
@@ -149,6 +158,9 @@
   });
 
   $('.date').datepicker({"format": "yyyy-mm-dd"});
+
+  
+
   $('#getUser').click(function(){ 
      $.ajax({
           type: "post",
@@ -247,6 +259,78 @@ function appendImageFromUpload(srcs){
   //txtBox.caretPos(caret_pos+src_merged.length)
   txtBox.focus()
 }
+
+
+//通过产品id得到该产品所有的商品
+
+    function getProductBycate(c_id){
+
+       $.ajax({
+          type: "post",
+          url: "/chart/find_product_by_cate",
+          dataType:"json",
+          data:{
+                 c_id : c_id    
+          },
+          success: function(data, textStatus){
+            var html='<select name="p_id"><option value="0">请选择商品</option>';
+           
+            for(var i=0;i<data.length;i++){
+               html+='<option value='+data[i].id+'>'+data[i].name+'</option>'
+            }
+            html+="</select>"
+            $("#product").empty();
+            $("#product").append(html);
+                   
+          },
+          complete: function(XMLHttpRequest, textStatus){
+            //HideLoading();
+          },
+          error: function(){
+            //请求出错处理
+          }
+       });
+
+
+    };
+
+  //结束---通过产品id得到该产品所有的商品---方法
+
+
+  //通过品牌id得到该产品所有的商品
+
+    function getProductByBrand(b_id){
+
+       $.ajax({
+          type: "post",
+          url: "/chart/find_product_by_brand",
+          dataType:"json",
+          data:{
+                 b_id : b_id    
+          },
+          success: function(data, textStatus){
+            var html='<select name="p_id"><option value="0">请选择商品</option>';
+           
+            for(var i=0;i<data.length;i++){
+               html+='<option value='+data[i].id+'>'+data[i].name+'</option>'
+            }
+            html+="</select>"
+            $("#product").empty();
+            $("#product").append(html);
+                   
+          },
+          complete: function(XMLHttpRequest, textStatus){
+            //HideLoading();
+          },
+          error: function(){
+            //请求出错处理
+          }
+       });
+
+
+    };
+
+  //结束---通过品牌id得到该产品所有的商品---方法
 
 
 

@@ -36,6 +36,12 @@ Shop::Application.routes.draw do
   controller :chart do
     get "chart/staff_chart"=>:pre_staff_chart
     post "chart/staff_chart"=>:staff_chart
+    get'chart/cate_chart'=>:pre_cate_chart
+    post'chart/cate_chart'=>:cate_chart
+    post'chart/find_product_by_cate'=>:find_product_by_cate
+    get'chart/brand_chart'=>:pre_brand_chart
+    post'chart/brand_chart'=>:brand_chart
+    post'chart/find_product_by_brand'=>:find_product_by_brand
 
   end
 

@@ -1,19 +1,19 @@
 var data1 = [];
 var data2 = [];
 
-<% if @s_id==0 %>
+<% if @p_id==0 %>
 
   <% @data1.each do |d|%>
-    data1.push(['<%= Staff.find(d[0]).name%>', <%= d[1]%>]);
+    data1.push(['<%= Product.find(d[0]).name%>', <%= d[1]%>]);
   <% end %>
   <% @data2.each do |d|%>
-    data2.push(['<%= Staff.find(d[0]).name%>', <%= d[1]%>]);
+    data2.push(['<%= Product.find(d[0]).name%>', <%= d[1]%>]);
   <% end %>
 
-  
+  var name='<%= @brand.name %>'
 
 $('#jqChart').jqChart({
-                title: { text: '全体员工的销售量统计图表' },
+                title: { text: name+'销售统计图表' },
                 axes: [
                          {
                              name: 'y1',
@@ -52,10 +52,10 @@ $('#jqChart').jqChart({
    <% @data2.each do |d|%>
      data2.push(['<%= d[0]%>', <%= d[1]%>]);
    <% end %>
-    var name='<%= @staff.name %>'
+    var name='<%= @product.name %>'
 
    $('#jqChart').jqChart({
-                title: { text: name+'的销售量统计图表' },
+                title: { text: name+'的销售统计图表' },
                 axes: [
                          {
                              name: 'y1',
@@ -71,20 +71,18 @@ $('#jqChart').jqChart({
                       ],
                 series: [
                             {
-                            	title: '销售量',
+                                title: '销售量',
                                 type: 'column',
                                 axisY: 'y1',
                                 data: data1 
                             },
                             {
-                            	title: '销售额',
+                                title: '销售额',
                                 type: 'line',
                                 axisY: 'y2',
                                 data: data2
                             }
                         ]
             });
-
-
 
 <% end %>

@@ -1,0 +1,22 @@
+  <div class="page-header">
+    <h3>产品销售图表</h3><br>
+         <form action="/chart/cate_chart" method="post" data-remote="true" >
+
+          起始日期：<input name="start_time"  class="input-medium search-query date"/>
+          终止日期：<input name="end_time" class="input-medium search-query date"/><br/><br/>
+          产品名称：<select name="c_id" id="c_id">
+                      <option value="0" class="input-medium">---请选择---</option>
+	                      <% Category.all.each do |c| %>
+	                         <option value="<%= c.id%>"><%= c.name%></option>
+	                      <% end %>
+	                </select>
+	                <span id="product"></span><br/><br/>
+	                    <input value="查看" type="submit" class="btn btn-primary" /> 
+	         </form>          
+	    <hr/>
+
+		</div>
+
+		<div id="jqChart" >
+
+	    </div>

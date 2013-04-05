@@ -2,10 +2,11 @@
    <div class="page-header">
     <h3>员工销售图表</h3><br>
          <form action="/chart/staff_chart" method="post" data-remote="true" >
+
           起始日期：<input name="start_time"  class="input-medium search-query date"/>
           终止日期：<input name="end_time" class="input-medium search-query date"/>
-          员工姓名：<select nane="s_id">
-                      <option selected="selected" value="0" class="input-medium">---请选择---</option>
+          员工姓名：<select name="s_id">
+                      <option value="0" class="input-medium">---请选择---</option>
 	                      <% Staff.all.each do |staff| %>
 	                         <option value="<%= staff.id%>"><%= staff.number%>|<%= staff.name%></option>
 	                      <% end %>
